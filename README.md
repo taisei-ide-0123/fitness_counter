@@ -12,3 +12,10 @@
 - node.js
 - express
 - MongoDB
+
+## Auth
+
+- passport
+- jsonwebtoken
+- passport-jwt
+- validator

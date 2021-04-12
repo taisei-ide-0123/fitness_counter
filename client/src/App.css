@@ -7,7 +7,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background: rgb(245, 222, 179);
+  background: transparent;
   color: rgb(255, 127, 80);
   font-family: cursive;
   font-style: italic;

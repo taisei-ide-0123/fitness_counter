@@ -1,26 +1,32 @@
 import React, { Component } from 'react'
-import './App.css'
+import '../App.css'
 import { Link } from 'react-router-dom'
 
-class Nav extends Component() {
+class Nav extends Component {
   render() {
     return (
-      <nav>
-        <Link
-          style={{ color: 'rgb(255, 127, 80)', textDecoration: 'none' }}
-          to="/"
-        >
-          <h1>Count Up</h1>
-        </Link>
-        <ul className="nav-links">
+      <div>
+        <nav>
           <Link
             style={{ color: 'rgb(255, 127, 80)', textDecoration: 'none' }}
-            to="/profile"
+            to="/"
           >
-            <li>Profile</li>
+            <h1>Count Up</h1>
           </Link>
-        </ul>
-      </nav>
+          <ul>
+            <Link
+              style={{
+                color: 'rgb(255, 127, 80)',
+                textDecoration: 'none',
+                listStyle: 'none',
+              }}
+              to="/profile"
+            >
+              <li>Profile</li>
+            </Link>
+          </ul>
+        </nav>
+      </div>
     )
   }
 }
