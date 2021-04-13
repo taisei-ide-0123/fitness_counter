@@ -11,7 +11,7 @@ class Nav extends Component {
             style={{ color: 'rgb(255, 127, 80)', textDecoration: 'none' }}
             to="/"
           >
-            <h1>Count Up</h1>
+            <h3>Fitness Counter</h3>
           </Link>
           <ul>
             <Link
@@ -19,6 +19,7 @@ class Nav extends Component {
                 color: 'rgb(255, 127, 80)',
                 textDecoration: 'none',
                 listStyle: 'none',
+                fontSize: '20px',
               }}
               to="/profile"
             >

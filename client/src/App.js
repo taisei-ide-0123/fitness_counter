@@ -14,7 +14,7 @@ import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import PrivateRoute from './components/private-route/PrivateRoute'
-import Dashboard from './components/dashboard/Dashboard'
+import Menu from './components/Menu/Menu'
 
 // トークンをチェックしてユーザーのログインを維持する。
 if (localStorage.jwtToken) {
@@ -47,7 +47,7 @@ function App() {
             <Route path="/profile" component={Profile} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/menu" component={Menu} />
           </Switch>
         </div>
       </Router>
@@ -59,9 +59,14 @@ const Home = () => (
   <div>
     <Nav />
     <h1>Home Page</h1>
-    <Link to="/camera">
-      <h1>Camera</h1>
-    </Link>
+    <div>
+      <Link to="/menu">
+        <h1>Menu</h1>
+      </Link>
+      <Link to="/camera">
+        <h1>Camera</h1>
+      </Link>
+    </div>
   </div>
 )
 
