@@ -16,16 +16,16 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    // If logged in and user navigates to Login page, should redirect them to dashboard
+    // If logged in and user navigates to Login page, should redirect them to menu
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/dashboard')
+      this.props.history.push('/menu')
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      // ログイン時にDashboardに返す
-      this.props.history.push('/Dashboard.js')
+      // ログイン時にMenuに返す
+      this.props.history.push('/menu')
     }
 
     if (nextProps.errors) {

@@ -7,7 +7,7 @@ import { setCurrentUser, logoutUser } from './actions/authActions'
 import { Provider } from 'react-redux'
 import store from './store'
 
-import Camera from './Camera'
+import Camera from './Squat'
 import Profile from './Profile'
 import Nav from './components/Nav'
 import Register from './components/auth/Register'

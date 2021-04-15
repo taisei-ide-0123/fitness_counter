@@ -1,8 +1,8 @@
 import React from 'react'
 import P5Wrapper from 'react-p5-wrapper'
-import sketch from './sketches/sketch'
+import sketch from './sketches/Squat'
 
-function Camera() {
+function Squat() {
   return (
     <div>
       <P5Wrapper sketch={sketch} />
@@ -10,4 +10,4 @@ function Camera() {
   )
 }
 
-export default Camera
+export default Squat

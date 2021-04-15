@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../App.css'
+import './Nav.css'
 import { Link } from 'react-router-dom'
 
 class Nav extends Component {
@@ -7,16 +7,13 @@ class Nav extends Component {
     return (
       <div>
         <nav>
-          <Link
-            style={{ color: 'rgb(255, 127, 80)', textDecoration: 'none' }}
-            to="/"
-          >
+          <Link style={{ color: '#ff5722', textDecoration: 'none' }} to="/">
             <h3>Fitness Counter</h3>
           </Link>
           <ul>
             <Link
               style={{
-                color: 'rgb(255, 127, 80)',
+                color: '#ff5722',
                 textDecoration: 'none',
                 listStyle: 'none',
                 fontSize: '20px',
