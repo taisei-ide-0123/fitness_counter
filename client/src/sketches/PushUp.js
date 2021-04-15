@@ -1,6 +1,6 @@
 import ml5 from 'ml5'
 
-const squat = (p) => {
+const PushUp = (p) => {
   let video
   let poseNet
   let count = 0
@@ -107,29 +107,28 @@ const squat = (p) => {
       rAnkleX = p.lerp(rAnkleX, rightAnkleX, 0.5)
       rAnkleY = p.lerp(rAnkleY, rightAnkleY, 0.5)
 
-      // console.log(nY)
       // 座標
-      // (leftHipX, leftHipY)
-      // (leftKneeX, leftKneeY)
-      // (leftAnkleX, leftAnkleY)
+      // (leftShoulderX, leftShoulderY)
+      // (leftElbowX, leftElbowY)
+      // (leftWristX, leftWristY)
 
-      let lHK = new Array(2)
-      lHK[0] = leftHipX - leftKneeX // ba[0]
-      lHK[1] = leftHipY - leftKneeY // ba[1]
-      let lAK = new Array(2)
-      lAK[0] = leftAnkleX - leftKneeX // bc[0]
-      lAK[1] = leftAnkleY - leftKneeY // bc[1]
+      let lSE = new Array(2)
+      lSE[0] = leftShoulderX - leftElbowX
+      lSE[1] = leftShoulderY - leftShoulderY
+      let lWE = new Array(2)
+      lWE[0] = leftWristX - leftElbowX
+      lWE[1] = leftWristY - leftElbowY
 
-      let lHKAK = lHK[0] * lAK[0] + lHK[1] * lAK[1]
-      let lHKn = lHK[0] * lHK[0] + lHK[1] * lHK[1]
-      let lAKn = lAK[0] * lAK[0] + lAK[1] * lAK[1]
-      let radian = Math.acos(lHKAK / Math.sqrt(lHKn * lAKn))
+      let lSEWE = lSE[0] * lWE[0] + lSE[1] * lWE[1]
+      let lSEn = lSE[0] * lSE[0] + lSE[1] * lSE[1]
+      let lWEn = lWE[0] * lWE[0] + lWE[1] * lWE[1]
+      let radian = Math.acos(lSEWE / Math.sqrt(lSEn * lWEn))
       let angle = (radian * 180) / Math.PI // 結果（ラジアンから角度に変換）
 
       console.log(angle)
-      if (angle >= 170) {
+      if (angle >= 100) {
         should_count = true
-      } else if (angle <= 120 && should_count) {
+      } else if (angle <= 70 && should_count) {
         count += 1
         should_count = false
       }
@@ -190,4 +189,4 @@ const squat = (p) => {
   }
 }
 
-export default squat
+export default PushUp

@@ -7,7 +7,8 @@ import { setCurrentUser, logoutUser } from './actions/authActions'
 import { Provider } from 'react-redux'
 import store from './store'
 
-import Camera from './Squat'
+import Squat from './Squat'
+import PushUp from './PushUp'
 import Profile from './Profile'
 import Nav from './components/Nav'
 import Register from './components/auth/Register'
@@ -43,7 +44,8 @@ function App() {
         <div className="App">
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/camera" component={Camera} />
+            <Route path="/squat" component={Squat} />
+            <Route path="/pushup" component={PushUp} />
             <Route path="/profile" component={Profile} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
