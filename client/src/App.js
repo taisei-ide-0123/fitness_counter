@@ -9,6 +9,10 @@ import store from './store'
 
 import Squat from './Squat'
 import PushUp from './PushUp'
+import PullUp from './PullUp'
+import ArmCurl from './ArmCurl'
+import DumbbellRaise from './DumbbellRaise'
+
 import Profile from './Profile'
 import Nav from './components/Nav'
 import Register from './components/auth/Register'
@@ -45,7 +49,10 @@ function App() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/squat" component={Squat} />
-            <Route path="/pushup" component={PushUp} />
+            <Route path="/push-up" component={PushUp} />
+            <Route path="/pull-up" component={PullUp} />
+            <Route path="/arm-curl" component={ArmCurl} />
+            <Route path="/dumbbell-raise" component={DumbbellRaise} />
             <Route path="/profile" component={Profile} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
