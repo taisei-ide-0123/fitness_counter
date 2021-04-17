@@ -14,10 +14,9 @@ import ArmCurl from './ArmCurl'
 import DumbbellRaise from './DumbbellRaise'
 
 import Profile from './Profile'
-import Nav from './components/Nav'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PrivateRoute from './components/private-route/PrivateRoute'
 import Menu from './components/Menu/Menu'
 
@@ -47,36 +46,21 @@ function App() {
       <Router>
         <div className="App">
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/squat" component={Squat} />
-            <Route path="/push-up" component={PushUp} />
-            <Route path="/pull-up" component={PullUp} />
-            <Route path="/arm-curl" component={ArmCurl} />
-            <Route path="/dumbbell-raise" component={DumbbellRaise} />
-            <Route path="/profile" component={Profile} />
+            <Route path="/" exact component={Menu} />
+            <PrivateRoute path="/menu" exact component={Menu} />
+            <PrivateRoute path="/squat" component={Squat} />
+            <PrivateRoute path="/push-up" component={PushUp} />
+            <PrivateRoute path="/pull-up" component={PullUp} />
+            <PrivateRoute path="/arm-curl" component={ArmCurl} />
+            <PrivateRoute path="/dumbbell-raise" component={DumbbellRaise} />
+            <PrivateRoute path="/profile" component={Profile} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <PrivateRoute exact path="/menu" component={Menu} />
           </Switch>
         </div>
       </Router>
     </Provider>
   )
 }
-
-const Home = () => (
-  <div>
-    <Nav />
-    <h1>Home Page</h1>
-    <div>
-      <Link to="/menu">
-        <h1>Menu</h1>
-      </Link>
-      <Link to="/camera">
-        <h1>Camera</h1>
-      </Link>
-    </div>
-  </div>
-)
 
 export default App

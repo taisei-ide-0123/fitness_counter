@@ -15,7 +15,7 @@ class Nav extends Component {
     return (
       <div>
         <nav>
-          <Link style={{ color: '#ff5722', textDecoration: 'none' }} to="/">
+          <Link style={{ color: '#ff5722', textDecoration: 'none' }} to="/menu">
             <h3>Fitness Counter</h3>
           </Link>
           <ul>
@@ -30,18 +30,16 @@ class Nav extends Component {
             >
               <li>Profile</li>
             </Link>
-            <Link>
-              <li
-                onClick={this.onLogoutClick}
-                style={{
-                  color: '#ff5722',
-                  textDecoration: 'none',
-                  listStyle: 'none',
-                  fontSize: '20px',
-                }}
-              >
-                Logout
-              </li>
+            <Link
+              onClick={this.onLogoutClick}
+              style={{
+                color: '#ff5722',
+                textDecoration: 'none',
+                listStyle: 'none',
+                fontSize: '20px',
+              }}
+            >
+              <li>Logout</li>
             </Link>
           </ul>
         </nav>
