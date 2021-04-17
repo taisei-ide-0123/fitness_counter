@@ -109,27 +109,27 @@ const squat = (p) => {
 
       // console.log(nY)
       // 座標
+      // (leftElbowX, leftElbowY)
+      // (leftShoulderX, leftShoulderY)
       // (leftHipX, leftHipY)
-      // (leftKneeX, leftKneeY)
-      // (leftAnkleX, leftAnkleY)
 
-      let lHK = new Array(2)
-      lHK[0] = leftHipX - leftKneeX // ba[0]
-      lHK[1] = leftHipY - leftKneeY // ba[1]
-      let lAK = new Array(2)
-      lAK[0] = leftAnkleX - leftKneeX // bc[0]
-      lAK[1] = leftAnkleY - leftKneeY // bc[1]
+      let lES = new Array(2)
+      lES[0] = leftElbowX - leftShoulderX // ba[0]
+      lES[1] = leftElbowY - leftShoulderY // ba[1]
+      let lHS = new Array(2)
+      lHS[0] = leftHipX - leftShoulderX // bc[0]
+      lHS[1] = leftHipY - leftShoulderY // bc[1]
 
-      let lHKAK = lHK[0] * lAK[0] + lHK[1] * lAK[1]
-      let lHKn = lHK[0] * lHK[0] + lHK[1] * lHK[1]
-      let lAKn = lAK[0] * lAK[0] + lAK[1] * lAK[1]
-      let radian = Math.acos(lHKAK / Math.sqrt(lHKn * lAKn))
+      let lESHS = lES[0] * lHS[0] + lES[1] * lHS[1]
+      let lESn = lES[0] * lES[0] + lES[1] * lES[1]
+      let lHSn = lHS[0] * lHS[0] + lHS[1] * lHS[1]
+      let radian = Math.acos(lESHS / Math.sqrt(lESn * lHSn))
       let angle = (radian * 180) / Math.PI // 結果（ラジアンから角度に変換）
 
       console.log(angle)
-      if (angle >= 170) {
+      if (angle >= 110) {
         should_count = true
-      } else if (angle <= 120 && should_count) {
+      } else if (angle <= 80 && should_count) {
         count += 1
         should_count = false
       }

@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
 import './Nav.css'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { logoutUser } from '../actions/authActions'
 
 class Nav extends Component {
+  onLogoutClick = (e) => {
+    e.preventDefault()
+    this.props.logoutUser()
+  }
+
   render() {
     return (
       <div>
@@ -22,6 +30,19 @@ class Nav extends Component {
             >
               <li>Profile</li>
             </Link>
+            <Link>
+              <li
+                onClick={this.onLogoutClick}
+                style={{
+                  color: '#ff5722',
+                  textDecoration: 'none',
+                  listStyle: 'none',
+                  fontSize: '20px',
+                }}
+              >
+                Logout
+              </li>
+            </Link>
           </ul>
         </nav>
       </div>
@@ -29,4 +50,13 @@ class Nav extends Component {
   }
 }
 
-export default Nav
+Nav.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+})
+
+export default connect(mapStateToProps, { logoutUser })(Nav)

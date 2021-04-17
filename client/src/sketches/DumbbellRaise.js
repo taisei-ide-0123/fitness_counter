@@ -109,27 +109,44 @@ const squat = (p) => {
 
       // console.log(nY)
       // 座標
+      // (leftElbowX, leftElbowY)
+      // (leftShoulderX, leftShoulderY)
       // (leftHipX, leftHipY)
-      // (leftKneeX, leftKneeY)
-      // (leftAnkleX, leftAnkleY)
 
-      let lHK = new Array(2)
-      lHK[0] = leftHipX - leftKneeX // ba[0]
-      lHK[1] = leftHipY - leftKneeY // ba[1]
-      let lAK = new Array(2)
-      lAK[0] = leftAnkleX - leftKneeX // bc[0]
-      lAK[1] = leftAnkleY - leftKneeY // bc[1]
+      let lES = new Array(2)
+      lES[0] = leftElbowX - leftShoulderX // ba[0]
+      lES[1] = leftElbowY - leftShoulderY // ba[1]
+      let lHS = new Array(2)
+      lHS[0] = leftHipX - leftShoulderX // bc[0]
+      lHS[1] = leftHipY - leftShoulderY // bc[1]
 
-      let lHKAK = lHK[0] * lAK[0] + lHK[1] * lAK[1]
-      let lHKn = lHK[0] * lHK[0] + lHK[1] * lHK[1]
-      let lAKn = lAK[0] * lAK[0] + lAK[1] * lAK[1]
-      let radian = Math.acos(lHKAK / Math.sqrt(lHKn * lAKn))
-      let angle = (radian * 180) / Math.PI // 結果（ラジアンから角度に変換）
+      let lESHS = lES[0] * lHS[0] + lES[1] * lHS[1]
+      let lESn = lES[0] * lES[0] + lES[1] * lES[1]
+      let lHSn = lHS[0] * lHS[0] + lHS[1] * lHS[1]
+      let l_radian = Math.acos(lESHS / Math.sqrt(lESn * lHSn))
+      let l_angle = (l_radian * 180) / Math.PI // 結果（ラジアンから角度に変換）
 
-      console.log(angle)
-      if (angle >= 170) {
+      let rES = new Array(2)
+      rES[0] = rightElbowX - rightShoulderX // ba[0]
+      rES[1] = rightElbowY - rightShoulderY // ba[1]
+      let rHS = new Array(2)
+      rHS[0] = rightHipX - rightShoulderX // bc[0]
+      rHS[1] = rightHipY - rightShoulderY // bc[1]
+
+      let rESHS = rES[0] * rHS[0] + rES[1] * rHS[1]
+      let rESn = rES[0] * rES[0] + rES[1] * rES[1]
+      let rHSn = rHS[0] * rHS[0] + rHS[1] * rHS[1]
+      let r_radian = Math.acos(rESHS / Math.sqrt(rESn * rHSn))
+      let r_angle = (r_radian * 180) / Math.PI // 結果（ラジアンから角度に変換）
+
+      console.log(l_angle)
+      // console.log(r_angle)
+      if (l_angle <= 40 && r_angle <= 40) {
         should_count = true
-      } else if (angle <= 120 && should_count) {
+      } else if (
+        (l_angle >= 90 && should_count) ||
+        (r_angle >= 90 && should_count)
+      ) {
         count += 1
         should_count = false
       }

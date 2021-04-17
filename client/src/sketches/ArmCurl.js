@@ -107,29 +107,50 @@ const squat = (p) => {
       rAnkleX = p.lerp(rAnkleX, rightAnkleX, 0.5)
       rAnkleY = p.lerp(rAnkleY, rightAnkleY, 0.5)
 
-      // console.log(nY)
       // 座標
-      // (leftHipX, leftHipY)
-      // (leftKneeX, leftKneeY)
-      // (leftAnkleX, leftAnkleY)
+      // (leftShoulderX, leftShoulderY)
+      // (leftElbowX, leftElbowY)
+      // (leftWristX, leftWristY)
 
-      let lHK = new Array(2)
-      lHK[0] = leftHipX - leftKneeX // ba[0]
-      lHK[1] = leftHipY - leftKneeY // ba[1]
-      let lAK = new Array(2)
-      lAK[0] = leftAnkleX - leftKneeX // bc[0]
-      lAK[1] = leftAnkleY - leftKneeY // bc[1]
+      let lSE = new Array(2)
+      lSE[0] = leftShoulderX - leftElbowX // ba[0]
+      lSE[1] = leftShoulderY - leftElbowY // ba[1]
+      let lWE = new Array(2)
+      lWE[0] = leftWristX - leftElbowX // bc[0]
+      lWE[1] = leftWristY - leftElbowY // bc[1]
 
-      let lHKAK = lHK[0] * lAK[0] + lHK[1] * lAK[1]
-      let lHKn = lHK[0] * lHK[0] + lHK[1] * lHK[1]
-      let lAKn = lAK[0] * lAK[0] + lAK[1] * lAK[1]
-      let radian = Math.acos(lHKAK / Math.sqrt(lHKn * lAKn))
-      let angle = (radian * 180) / Math.PI // 結果（ラジアンから角度に変換）
+      let lSEWE = lSE[0] * lWE[0] + lSE[1] * lWE[1]
+      let lSEn = lSE[0] * lSE[0] + lSE[1] * lSE[1]
+      let lWEn = lWE[0] * lWE[0] + lWE[1] * lWE[1]
+      let l_radian = Math.acos(lSEWE / Math.sqrt(lSEn * lWEn))
+      let l_angle = (l_radian * 180) / Math.PI // 結果（ラジアンから角度に変換）
 
-      console.log(angle)
-      if (angle >= 170) {
+      // 座標
+      // (rightShoulderX, rightShoulderY)
+      // (rightElbowX, rightElbowY)
+      // (rightWristX, rightWristY)
+
+      let rSE = new Array(2)
+      rSE[0] = rightShoulderX - rightElbowX // ba[0]
+      rSE[1] = rightShoulderY - rightElbowY // ba[1]
+      let rWE = new Array(2)
+      rWE[0] = rightWristX - rightElbowX // bc[0]
+      rWE[1] = rightWristY - rightElbowY // bc[1]
+
+      let rSEWE = rSE[0] * rWE[0] + rSE[1] * rWE[1]
+      let rSEn = rSE[0] * rSE[0] + rSE[1] * rSE[1]
+      let rWEn = rWE[0] * rWE[0] + rWE[1] * rWE[1]
+      let r_radian = Math.acos(rSEWE / Math.sqrt(rSEn * rWEn))
+      let r_angle = (r_radian * 180) / Math.PI // 結果（ラジアンから角度に変換）
+
+      // console.log(l_angle)
+      // console.log(r_angle)
+      if (l_angle >= 170 || r_angle >= 170) {
         should_count = true
-      } else if (angle <= 120 && should_count) {
+      } else if (
+        (l_angle <= 40 && should_count) ||
+        (r_angle <= 40 && should_count)
+      ) {
         count += 1
         should_count = false
       }
