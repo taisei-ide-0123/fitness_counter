@@ -19,6 +19,7 @@ import Login from './components/auth/Login'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PrivateRoute from './components/private-route/PrivateRoute'
 import Menu from './components/Menu/Menu'
+import Home from './components/Menu/Home'
 
 // トークンをチェックしてユーザーのログインを維持する。
 if (localStorage.jwtToken) {
@@ -46,7 +47,7 @@ function App() {
       <Router>
         <div className="App">
           <Switch>
-            <Route path="/" exact component={Menu} />
+            <Route path="/" exact component={Home} />
             <PrivateRoute path="/menu" exact component={Menu} />
             <PrivateRoute path="/squat" component={Squat} />
             <PrivateRoute path="/push-up" component={PushUp} />
