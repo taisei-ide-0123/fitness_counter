@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './Menu.css'
-import Nav from '../HomeNav'
+import Nav from '../Nav'
 import SQUAT from '../../Squat.jpg'
 import PUSHUP from '../../PushUp.jpg'
 import PULLUP from '../../PullUp.jpg'
@@ -18,9 +18,10 @@ class Menu extends Component {
     return (
       <>
         <Nav />
-        <div className="container">
+        <div className="container service">
           <div className="row">
-            <div className="col s12 m7">
+            {/* card-1 */}
+            <div className="col s12 m6 l3 center-align">
               <div className="card">
                 <div className="card-image">
                   <img src={SQUAT} alt="squat" />
@@ -32,7 +33,7 @@ class Menu extends Component {
                       to="/squat"
                       style={{ color: '#ff5722', textDecoration: 'none' }}
                     >
-                      SQUAT
+                      PLAY!
                     </Link>
                     <i class="material-icons right">more_vert</i>
                   </span>
@@ -57,12 +58,9 @@ class Menu extends Component {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="container">
-          <div className="row">
-            <div className="col s12 m7">
+            {/* card-2 */}
+            <div className="col s12 m6 l3 center-align">
               <div className="card">
                 <div className="card-image">
                   <img src={PUSHUP} alt="push up" />
@@ -74,7 +72,7 @@ class Menu extends Component {
                       to="/push-up"
                       style={{ color: '#ff5722', textDecoration: 'none' }}
                     >
-                      PUSH UP
+                      PLAY!
                     </Link>
                     <i class="material-icons right">more_vert</i>
                   </span>
@@ -97,12 +95,9 @@ class Menu extends Component {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="container">
-          <div className="row">
-            <div className="col s12 m7">
+            {/* card-3 */}
+            <div className="col s12 m6 l3 center-align">
               <div className="card">
                 <div className="card-image">
                   <img src={PULLUP} alt="pull up" />
@@ -114,7 +109,7 @@ class Menu extends Component {
                       to="/pull-up"
                       style={{ color: '#ff5722', textDecoration: 'none' }}
                     >
-                      PULL UP
+                      PLAY!
                     </Link>
                     <i class="material-icons right">more_vert</i>
                   </span>
@@ -135,12 +130,9 @@ class Menu extends Component {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="container">
-          <div className="row">
-            <div className="col s12 m7">
+            {/* card-4 */}
+            <div className="col s12 m6 l3 center-align">
               <div className="card">
                 <div className="card-image">
                   <img src={ARMCURL} alt="arm curl" />
@@ -152,7 +144,7 @@ class Menu extends Component {
                       to="/arm-curl"
                       style={{ color: '#ff5722', textDecoration: 'none' }}
                     >
-                      ARM CURL
+                      PLAY!
                     </Link>
                     <i class="material-icons right">more_vert</i>
                   </span>
@@ -177,12 +169,9 @@ class Menu extends Component {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="container">
-          <div className="row">
-            <div className="col s12 m7">
+            {/* card-5 */}
+            <div className="col s12 m6 l3 center-align">
               <div className="card">
                 <div className="card-image">
                   <img src={DUMBBELLRAISE} alt="dumbbell raise" />
@@ -194,7 +183,7 @@ class Menu extends Component {
                       to="/dumbbell-raise"
                       style={{ color: '#ff5722', textDecoration: 'none' }}
                     >
-                      DUMBBELL RAISE
+                      PLAY!
                     </Link>
                     <i class="material-icons right">more_vert</i>
                   </span>

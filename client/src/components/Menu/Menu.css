@@ -1,126 +1,13 @@
-.container {
-  margin: 0 auto;
-  max-width: 1280px;
-  width: 90%;
-}
-
-@media only screen and (min-width: 601px) {
-  .container {
-    width: 85%;
-  }
-}
-
-@media only screen and (min-width: 993px) {
-  .container {
-    width: 70%;
-  }
-}
-
-.container .row {
-  margin-left: -0.75rem;
-  margin-right: -0.75rem;
-}
-
-.row {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.row .col {
-  float: left;
-  box-sizing: border-box;
-  padding: 0 0.75rem;
-}
-
-.row .col.s1 {
-  width: 8.3333333333%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-/* ------ 中略 ------ */
-.row .col.s12 {
-  width: 100%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
 .card {
-  position: relative;
-  margin: 0.5rem 0 1rem 0;
-  background-color: #fff;
-  transition: box-shadow .25s;
-  border-radius: 2px;
+  transition: 0.5s;
+  background: #eee;
 }
 
-.card.small {
-  height: 300px;
+.card:hover img {
+  opacity: 0.7;
 }
 
-.card.medium {
-  height: 400px;
-}
-
-.card.large {
-  height: 500px;
-}
-
-.card.small .card-image,
-.card.medium .card-image,
-.card.large .card-image {
-  max-height: 60%;
-  overflow: hidden;
-}
-
-.card.small .card-content,
-.card.medium .card-content,
-.card.large .card-content {
-  max-height: 40%;
-  overflow: hidden;
-}
-
-.card .card-image {
-  position: relative;
-}
-
-.card .card-image img {
-  display: block;
-  border-radius: 2px 2px 0 0;
-  position: relative;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-}
-
-.card .card-content {
-  padding: 20px;
-  border-radius: 0 0 2px 2px;
-}
-
-.card .card-content p {
-  margin: 0;
-  color: inherit;
-}
-
-.card .card-image .card-title {
-  color: #fff;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 20px;
-}
-
-.card .card-content .card-title {
-  line-height: 48px;
+.service .card:hover {
+  transform: scale(1.03);
+  background: #fff;
 }
