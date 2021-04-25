@@ -48,8 +48,11 @@ class Menu extends Component {
                     <i class="material-icons right">close</i>
                   </span>
                   <p>
-                    Here is some more information about this product that is
-                    only revealed once clicked on.
+                    スクワットは筋トレの王様と言われており、1回のトレーニングで消費できるカロリーも多いです。
+                    <br></br>
+                    また、体全体をバランスよく鍛えられるので、筋肉を刺激できて基礎代謝も上がるというメリットがあります。
+                    スクワットで鍛えられるお尻や太ももは特に大きな筋肉なので効率的に代謝アップの効果が見込めます。
+                    他にも、女性の場合は冷え性などにも効果的です。
                   </p>
                 </div>
               </div>
@@ -87,8 +90,9 @@ class Menu extends Component {
                     <i class="material-icons right">close</i>
                   </span>
                   <p>
-                    Here is some more information about this product that is
-                    only revealed once clicked on.
+                    腕立て伏せは、腕力や胸筋、体幹などの上半身全体の広範囲を鍛えることができます。
+                    <br></br>
+                    体幹以外にも胸や腕、肩など「見せる筋肉」を鍛えることができるので、目立つ部分を引き締めたい方にはオススメのトレーニングです。
                   </p>
                 </div>
               </div>
@@ -126,8 +130,7 @@ class Menu extends Component {
                     <i class="material-icons right">close</i>
                   </span>
                   <p>
-                    Here is some more information about this product that is
-                    only revealed once clicked on.
+                    懸垂は姿勢改善に効果的です。ぶら下がるだけでも体がまっすぐ伸びるのでそれだけでも姿勢矯正が期待できます。また、背中が大きくなることでウエストが細く見えるようになります。懸垂をして、かっこいい体を作りましょう。
                   </p>
                 </div>
               </div>
@@ -165,8 +168,11 @@ class Menu extends Component {
                     <i class="material-icons right">close</i>
                   </span>
                   <p>
-                    Here is some more information about this product that is
-                    only revealed once clicked on.
+                    ダンベルやバーベルを両手に持ち、肘を曲げることによって腕を鍛えるトレーニングです。
+                    <br></br>
+                    主に力こぶができる部分である上腕二頭筋を鍛えることができます。
+                    <br></br>
+                    カッコ良くてたくましい腕を手に入れましょう。
                   </p>
                 </div>
               </div>
@@ -204,8 +210,9 @@ class Menu extends Component {
                     <i class="material-icons right">close</i>
                   </span>
                   <p>
-                    Here is some more information about this product that is
-                    only revealed once clicked on.
+                    肩の筋肉は大きく前部・中部・後部に分けることができ、かなり大きな筋肉です。
+                    <br></br>
+                    肩を鍛えることで、ウエストが細く見えるようなVシェイプ、さらには小顔効果も期待できます。
                   </p>
                 </div>
               </div>
