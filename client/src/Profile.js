@@ -1,38 +1,58 @@
 import React, { Component } from 'react'
-import './App.css'
-import Nav from './components/Nav'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { logoutUser } from './actions/authActions'
-
-class Menu extends Component {
+import { setCurrentUser } from './actions/authActions'
+import Nav from './components/Nav'
+class Profile extends Component {
   render() {
     const { user } = this.props.auth
-
+    console.log(user)
     return (
-      <>
+      <div>
         <Nav />
-        <div style={{ height: '75vh' }} className="container valign-wrapper">
-          <div className="row">
-            <div className="col s12 center-align">
-              <h4>
-                <b>Hey there,</b> {user.name.split(' ')[0]} &nbsp;
-                {user.name.split(' ')[1]}
-                <p className="flow-text grey-text text-darken-1">
-                  You are logged into a full-stack{' '}
-                  <span style={{ fontFamily: 'monospace' }}>MERN</span> app 👏
-                </p>
-              </h4>
+        <div className="container">
+          <div style={{ marginTop: '4rem' }} className="row">
+            <div className="col s8 offset-s2">
+              <div className="col s12" style={{ paddingLeft: '11.250px' }}>
+                <h4>
+                  <b>Profile&nbsp;</b>
+                  <i className="material-icons">edit</i>
+                </h4>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  disabled
+                  id="disabled"
+                  type="text"
+                  class="validate"
+                  placeholder={user.name}
+                ></input>
+                <label htmlFor="person">
+                  <i className="material-icons left">person</i>
+                </label>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  disabled
+                  id="disabled"
+                  type="text"
+                  class="validate"
+                  placeholder={user.email}
+                ></input>
+                <label htmlFor="email">
+                  <i className="material-icons left">mail</i>
+                </label>
+              </div>
             </div>
           </div>
         </div>
-      </>
+      </div>
     )
   }
 }
 
-Menu.propTypes = {
-  logoutUser: PropTypes.func.isRequired,
+Profile.propTypes = {
+  setCurrentUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
 }
 
@@ -40,4 +60,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 })
 
-export default connect(mapStateToProps, { logoutUser })(Menu)
+export default connect(mapStateToProps, { setCurrentUser })(Profile)
