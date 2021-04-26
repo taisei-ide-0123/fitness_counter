@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setCurrentUser } from './actions/authActions'
@@ -13,10 +14,12 @@ class Profile extends Component {
         <div className="container">
           <div style={{ marginTop: '4rem' }} className="row">
             <div className="col s8 offset-s2">
-              <div className="col s12" style={{ paddingLeft: '11.250px' }}>
+              <div className="col s12" style={{ paddingBottom: '20.250px' }}>
                 <h4>
                   <b>Profile&nbsp;</b>
-                  <i className="material-icons">edit</i>
+                  <Link to="/update">
+                    <i className="material-icons">edit</i>
+                  </Link>
                 </h4>
               </div>
               <div className="input-field col s12">
