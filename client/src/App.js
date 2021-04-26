@@ -14,6 +14,7 @@ import ArmCurl from './ArmCurl'
 import DumbbellRaise from './DumbbellRaise'
 
 import Profile from './Profile'
+import UpdateProfile from './UpdateProfile'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -55,6 +56,7 @@ function App() {
             <PrivateRoute path="/arm-curl" component={ArmCurl} />
             <PrivateRoute path="/dumbbell-raise" component={DumbbellRaise} />
             <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute path="/update" component={UpdateProfile} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
           </Switch>
