@@ -81,6 +81,8 @@ router.post('/login', (req, res) => {
           id: user.id,
           name: user.name,
           email: user.email,
+          birthday: user.birthday,
+          plofile_img: user.plofile_img,
         }
 
         // Sign token
@@ -102,6 +104,28 @@ router.post('/login', (req, res) => {
       }
     })
   })
+})
+
+router.route('/:id').get((req, res) => {
+  User.findById(req.params.id)
+    .then((user) => res.json(user))
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
+
+router.route('/update/:id').put((req, res) => {
+  User.findByIdAndUpdate(req.params.id)
+    .then((user) => {
+      user.name = req.body.name
+      user.email = req.body.email
+      user.birthday = req.body.birthday
+      user.plofile_img = req.body.plofile_img
+
+      user
+        .save()
+        .then(() => res.json('User updated!'))
+        .catch((err) => res.status(400).json('Error: ' + err))
+    })
+    .catch((err) => res.status(400).json('Error: ' + err))
 })
 
 module.exports = router
