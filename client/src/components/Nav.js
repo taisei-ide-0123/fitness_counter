@@ -16,7 +16,7 @@ class Nav extends Component {
       <div>
         <nav>
           <Link style={{ color: '#ff5722', textDecoration: 'none' }} to="/menu">
-            <h3>Fitness Counter</h3>
+            <h3>Fithabit</h3>
           </Link>
           <ul>
             <Link
