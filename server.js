@@ -34,7 +34,16 @@ require('./config/passport')(passport)
 // Routes
 app.use('/api/users', users)
 
-app.use(express.static(__dirname + './client/public'))
+if (process.env.NODE_ENV === 'production') {
+  // Exprees will serve up production assets
+  app.use(express.static('./client/public'))
+
+  // Express serve up index.html file if it doesn't recognize route
+  const path = require('path')
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html'))
+  })
+}
 
 const port = process.env.PORT || 5000 // process.env.port is Heroku's port if you choose to deploy the app there
 
