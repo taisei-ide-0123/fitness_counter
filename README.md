@@ -1,8 +1,9 @@
-# fitness_counter
+# Fithabit
 
 ## frontend
 
-- react
+- React
+- React Redux
 - p5.js
 - ml5.js
 - posenet
