@@ -15,6 +15,14 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  img: {
+    data: Buffer,
+    contentType: String,
+  },
+  birthday: {
+    type: String,
+    required: false,
+  },
   date: {
     type: Date,
     default: Date.now,

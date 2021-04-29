@@ -1,5 +1,8 @@
 const express = require('express')
 const router = express.Router()
+const multer = require('multer')
+const { v4: uuidv4 } = require('uuid')
+let path = require('path')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const keys = require('../../config/keys')
@@ -10,6 +13,26 @@ const validateLoginInput = require('../../validation/login')
 
 // Load User model
 const User = require('../../models/User')
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '../../images')
+  },
+  filename: function (req, file, cb) {
+    cb(null, uuidv4() + '-' + Date.now() + path.extname(file.originalname))
+  },
+})
+
+const fileFilter = (req, file, cb) => {
+  const allowedFileTypes = ['image/*']
+  if (allowedFileTypes.includes(file.mimetype)) {
+    cb(null, true)
+  } else {
+    cb(null, false)
+  }
+}
+
+let upload = multer({ storage, fileFilter })
 
 // @route POST api/users/register
 // @desc Register user
@@ -81,6 +104,8 @@ router.post('/login', (req, res) => {
           id: user.id,
           name: user.name,
           email: user.email,
+          birthday: user.birthday,
+          img: user.img,
         }
 
         // Sign token
@@ -102,6 +127,28 @@ router.post('/login', (req, res) => {
       }
     })
   })
+})
+
+router.route('/:id').get((req, res) => {
+  User.findById(req.params.id)
+    .then((user) => res.json(user))
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
+
+router.route('/update/:id').put(upload.single('img'), (req, res) => {
+  User.findByIdAndUpdate(req.params.id)
+    .then((user) => {
+      user.name = req.body.name
+      user.email = req.body.email
+      user.birthday = req.body.birthday
+      user.img = req.body.img
+
+      user
+        .save()
+        .then(() => res.json('User updated!'))
+        .catch((err) => res.status(400).json('Error: ' + err))
+    })
+    .catch((err) => res.status(400).json('Error: ' + err))
 })
 
 module.exports = router
