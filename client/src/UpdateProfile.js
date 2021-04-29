@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Nav from './components/Nav'
 import PropTypes from 'prop-types'
@@ -88,8 +89,6 @@ class UpdateProfile extends Component {
     axios
       .put('/api/users/update/' + this.props.auth.user.id, user)
       .then((res) => console.log(res.data))
-
-    window.location = '/profile'
   }
 
   render() {
@@ -206,19 +205,21 @@ class UpdateProfile extends Component {
                     </label>
                   </div>
                   <div className="col s12" style={{ paddingLeft: '11.250px' }}>
-                    <button
-                      style={{
-                        width: '150px',
-                        borderRadius: '3px',
-                        letterSpacing: '1.5px',
-                        marginTop: '1rem',
-                        marginBottom: '4rem',
-                      }}
-                      type="submit"
-                      className="btn btn-large waves-effect waves-light hoverable deep-orange"
-                    >
-                      UPDATE
-                    </button>
+                    <Link to="/profile">
+                      <button
+                        style={{
+                          width: '150px',
+                          borderRadius: '3px',
+                          letterSpacing: '1.5px',
+                          marginTop: '1rem',
+                          marginBottom: '4rem',
+                        }}
+                        type="submit"
+                        className="btn btn-large waves-effect waves-light hoverable deep-orange"
+                      >
+                        UPDATE
+                      </button>
+                    </Link>
                   </div>
                 </form>
               </div>
