@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const passport = require('passport')
+const path = require('path')
 
 const users = require('./routes/api/users')
 
