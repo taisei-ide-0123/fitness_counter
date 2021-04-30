@@ -88,6 +88,8 @@ class UpdateProfile extends Component {
     axios
       .put('/api/users/update/' + this.props.auth.user.id, user)
       .then((res) => console.log(res.data))
+
+    window.location = '/profile'
   }
 
   render() {
