@@ -129,7 +129,7 @@ const squat = (p) => {
       console.log(angle)
       if (angle >= 170) {
         should_count = true
-      } else if (angle <= 120 && should_count) {
+      } else if (angle <= 130 && should_count) {
         count += 1
         should_count = false
       }
