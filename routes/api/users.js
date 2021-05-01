@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const multer = require('multer')
 const { v4: uuidv4 } = require('uuid')
-let path = require('path')
+const path = require('path')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const keys = require('../../config/keys')
@@ -32,7 +32,7 @@ const fileFilter = (req, file, cb) => {
   }
 }
 
-let upload = multer({ storage, fileFilter })
+const upload = multer({ storage, fileFilter })
 
 // @route POST api/users/register
 // @desc Register user
