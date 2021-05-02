@@ -13,7 +13,7 @@ const CountSchema = new Schema({
     required: true,
   },
   count: {
-    type: Integer,
+    type: Number,
     required: true,
   },
   date: {

@@ -6,6 +6,7 @@ const passport = require('passport')
 const path = require('path')
 
 const users = require('./routes/api/users')
+const counts = require('./routes/api/counts')
 
 const app = express()
 
@@ -34,6 +35,7 @@ require('./config/passport')(passport)
 
 // Routes
 app.use('/api/users', users)
+app.use('/api/counts', counts)
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'))
