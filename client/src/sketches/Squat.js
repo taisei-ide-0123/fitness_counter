@@ -1,22 +1,27 @@
 import React, { Component } from 'react'
 import ml5 from 'ml5'
 import P5Wrapper from 'react-p5-wrapper'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { setCurrentUser } from '../actions/authActions'
 
 class Squat extends Component {
   constructor(props) {
     super(props)
+    const { user } = this.props.auth
+    // console.log(user)
     this.state = {
-      user: '',
+      user: user.id,
       event: 'squat',
       count: '',
-      date: '',
     }
+    console.log(this.state)
   }
   render() {
     const squat = (p) => {
       let video
       let poseNet
-      let button
+      let saveButton
       let count = 0
       let countCanvas
       let should_count = true
@@ -58,17 +63,29 @@ class Squat extends Component {
         video.hide() // 映像を一つにする
         poseNet = ml5.poseNet(video, p.modelReady)
         poseNet.on('pose', p.gotPoses) // ポーズが検出された時に結果を返すイベント
-        button = p.createButton('save', [count])
-        button.position(p.windowWidth - 110, 5)
-        button.mousePressed()
-        button.style('width', '100px')
-        button.style('height', '100px')
-        button.style('color', '#fff')
-        button.style('font-size', '30px')
-        button.style('box-shadow', '2px 2px #000')
-        button.style('border-radius', '50px')
-        button.style('background', '#1da1f2')
-        button.style('border', 'none')
+        saveButton = p.createButton('save')
+        saveButton.position(p.windowWidth - 110, 5)
+        saveButton.mousePressed(p.save)
+        saveButton.style('width', '100px')
+        saveButton.style('height', '100px')
+        saveButton.style('color', '#fff')
+        saveButton.style('font-size', '30px')
+        saveButton.style('box-shadow', '2px 2px #000')
+        saveButton.style('border-radius', '50px')
+        saveButton.style('background', '#1da1f2')
+        saveButton.style('border', 'none')
+      }
+
+      p.save = (e) => {
+        // console.log(count)
+        const current_count = {
+          user: this.state.user,
+          event: this.state.event,
+          count: count,
+        }
+        console.log(current_count)
+
+        // window.location = '/menu'
       }
 
       p.windowResized = () => {
@@ -224,4 +241,14 @@ class Squat extends Component {
     )
   }
 }
-export default Squat
+
+Squat.propTypes = {
+  setCurrentUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+})
+
+export default connect(mapStateToProps, { setCurrentUser })(Squat)
