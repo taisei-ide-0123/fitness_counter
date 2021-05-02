@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ml5 from 'ml5'
 import P5Wrapper from 'react-p5-wrapper'
+import axios from 'axios'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setCurrentUser } from '../actions/authActions'
@@ -15,7 +16,7 @@ class Squat extends Component {
       event: 'squat',
       count: '',
     }
-    console.log(this.state)
+    // console.log(this.state)
   }
   render() {
     const squat = (p) => {
@@ -97,9 +98,13 @@ class Squat extends Component {
           event: this.state.event,
           count: count,
         }
-        console.log(current_count)
+        console.log(this.state.user)
 
-        // window.location = '/menu'
+        axios
+          .post('/api/counts/add/' + this.state.user, current_count)
+          .then((res) => console.log(res.data))
+
+        window.location = '/menu'
       }
 
       p.cancell = (e) => {

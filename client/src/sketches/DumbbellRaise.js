@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 import P5Wrapper from 'react-p5-wrapper'
 import ml5 from 'ml5'
+import axios from 'axios'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { setCurrentUser } from '../actions/authActions'
 
 class DumbbellRaise extends Component {
   render() {
     const dumbbell_raise = (p) => {
       let video
       let poseNet
+      let saveButton
+      let cancellButton
       let count = 0
       let countCanvas
       let should_count = true
@@ -48,6 +54,46 @@ class DumbbellRaise extends Component {
         video.hide() // 映像を一つにする
         poseNet = ml5.poseNet(video, p.modelReady)
         poseNet.on('pose', p.gotPoses) // ポーズが検出された時に結果を返すイベント
+
+        saveButton = p.createButton('save')
+        saveButton.position(p.windowWidth - 110, 5)
+        saveButton.mousePressed(p.save)
+        saveButton.style('width', '90px')
+        saveButton.style('height', '90px')
+        saveButton.style('color', '#fff')
+        saveButton.style('font-size', '25px')
+        saveButton.style('box-shadow', '2px 2px #000')
+        saveButton.style('border-radius', '50px')
+        saveButton.style('background', '#1da1f2')
+        saveButton.style('border', 'none')
+
+        cancellButton = p.createButton('cancell')
+        cancellButton.position(p.windowWidth - 220, 5)
+        cancellButton.mousePressed(p.cancell)
+        cancellButton.style('width', '90px')
+        cancellButton.style('height', '90px')
+        cancellButton.style('color', '#fff')
+        cancellButton.style('font-size', '25px')
+        cancellButton.style('box-shadow', '2px 2px #000')
+        cancellButton.style('border-radius', '50px')
+        cancellButton.style('background', '#ff0027')
+        cancellButton.style('border', 'none')
+      }
+
+      p.save = (e) => {
+        // console.log(count)
+        const current_count = {
+          user: this.state.user,
+          event: this.state.event,
+          count: count,
+        }
+        console.log(this.state.user)
+
+        axios
+          .post('/api/counts/add/' + this.state.user, current_count)
+          .then((res) => console.log(res.data))
+
+        window.location = '/menu'
       }
 
       p.windowResized = () => {
@@ -219,4 +265,13 @@ class DumbbellRaise extends Component {
   }
 }
 
-export default DumbbellRaise
+DumbbellRaise.propTypes = {
+  setCurrentUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+})
+
+export default connect(mapStateToProps, { setCurrentUser })(DumbbellRaise)
