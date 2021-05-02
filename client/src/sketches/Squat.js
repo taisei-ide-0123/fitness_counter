@@ -3,10 +3,20 @@ import ml5 from 'ml5'
 import P5Wrapper from 'react-p5-wrapper'
 
 class Squat extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      user: '',
+      event: 'squat',
+      count: '',
+      date: '',
+    }
+  }
   render() {
     const squat = (p) => {
       let video
       let poseNet
+      let button
       let count = 0
       let countCanvas
       let should_count = true
@@ -48,6 +58,17 @@ class Squat extends Component {
         video.hide() // 映像を一つにする
         poseNet = ml5.poseNet(video, p.modelReady)
         poseNet.on('pose', p.gotPoses) // ポーズが検出された時に結果を返すイベント
+        button = p.createButton('save', [count])
+        button.position(p.windowWidth - 110, 5)
+        button.mousePressed()
+        button.style('width', '100px')
+        button.style('height', '100px')
+        button.style('color', '#fff')
+        button.style('font-size', '30px')
+        button.style('box-shadow', '2px 2px #000')
+        button.style('border-radius', '50px')
+        button.style('background', '#1da1f2')
+        button.style('border', 'none')
       }
 
       p.windowResized = () => {
