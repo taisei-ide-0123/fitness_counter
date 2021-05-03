@@ -26,6 +26,17 @@ class Nav extends Component {
                 listStyle: 'none',
                 fontSize: '20px',
               }}
+              to="/my-records"
+            >
+              <li>Record</li>
+            </Link>
+            <Link
+              style={{
+                color: '#ff5722',
+                textDecoration: 'none',
+                listStyle: 'none',
+                fontSize: '20px',
+              }}
               to="/profile"
             >
               <li>Profile</li>

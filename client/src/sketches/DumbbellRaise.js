@@ -7,6 +7,18 @@ import { connect } from 'react-redux'
 import { setCurrentUser } from '../actions/authActions'
 
 class DumbbellRaise extends Component {
+  constructor(props) {
+    super(props)
+    const { user } = this.props.auth
+    // console.log(user)
+    this.state = {
+      user: user.id,
+      event: 'dumbbell raise',
+      count: '',
+    }
+    // console.log(this.state)
+  }
+
   render() {
     const dumbbell_raise = (p) => {
       let video

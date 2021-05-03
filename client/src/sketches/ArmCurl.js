@@ -7,6 +7,18 @@ import { connect } from 'react-redux'
 import { setCurrentUser } from '../actions/authActions'
 
 class ArmCurl extends Component {
+  constructor(props) {
+    super(props)
+    const { user } = this.props.auth
+    // console.log(user)
+    this.state = {
+      user: user.id,
+      event: 'arm curl',
+      count: '',
+    }
+    // console.log(this.state)
+  }
+
   render() {
     const arm_curl = (p) => {
       let video
