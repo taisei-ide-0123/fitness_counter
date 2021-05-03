@@ -27,6 +27,21 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  total_squat_count: {
+    type: Number,
+  },
+  total_push_up_count: {
+    type: Number,
+  },
+  total_pull_up_count: {
+    type: Number,
+  },
+  total_arm_curl_count: {
+    type: Number,
+  },
+  total_dumbbell_raise_count: {
+    type: Number,
+  },
 })
 
 module.exports = User = mongoose.model('users', UserSchema)

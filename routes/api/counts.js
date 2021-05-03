@@ -4,6 +4,7 @@ const router = express.Router()
 // Load Count model
 const Count = require('../../models/Count')
 
+// Record
 router.route('/:id').get((req, res) => {
   Count.find({ user: req.params.id })
     .then((count) => res.json(count))

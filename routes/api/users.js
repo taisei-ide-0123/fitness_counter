@@ -106,6 +106,7 @@ router.post('/login', (req, res) => {
           email: user.email,
           birthday: user.birthday,
           img: user.img,
+          total_squat_count: user.total_squat_count,
         }
 
         // Sign token
@@ -129,6 +130,7 @@ router.post('/login', (req, res) => {
   })
 })
 
+// Profile
 router.route('/:id').get((req, res) => {
   User.findById(req.params.id)
     .then((user) => res.json(user))
@@ -146,6 +148,21 @@ router.route('/update/:id').put(upload.single('img'), (req, res) => {
       user
         .save()
         .then(() => res.json('User updated!'))
+        .catch((err) => res.status(400).json('Error: ' + err))
+    })
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
+
+// TOTAL AQUAT COUNT UPDATE
+router.route('/total/squat/count/:id').put((req, res) => {
+  User.findByIdAndUpdate(req.params.id)
+    .then((user) => {
+      // console.log(user)
+      user.total_squat_count = req.body.total_squat_count
+      // console.log(req.body)
+      user
+        .save()
+        .then(() => res.json('Total squat count updated!'))
         .catch((err) => res.status(400).json('Error: ' + err))
     })
     .catch((err) => res.status(400).json('Error: ' + err))
