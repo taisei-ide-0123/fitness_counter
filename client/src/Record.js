@@ -42,17 +42,21 @@ class RecordList extends Component {
     return (
       <div>
         <Nav />
-        <h3>Training Record</h3>
-        <table className="table">
-          <thead className="thead-light">
-            <tr>
-              <th>Event</th>
-              <th>Count</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>{this.recordList()}</tbody>
-        </table>
+        <h3 className="bold" style={{ fontFamily: 'GillSans' }}>
+          Training Record
+        </h3>
+        <div className="container">
+          <table className="table highlight centered">
+            <thead>
+              <tr className="deep-orange lighten-1">
+                <th>Event</th>
+                <th>Count</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>{this.recordList()}</tbody>
+          </table>
+        </div>
       </div>
     )
   }
