@@ -7,6 +7,9 @@ import { setCurrentUser, logoutUser } from './actions/authActions'
 import { Provider } from 'react-redux'
 import store from './store'
 
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import PrivateRoute from './components/private-route/PrivateRoute'
+
 import Squat from './sketches/Squat'
 import PushUp from './sketches/PushUp'
 import PullUp from './sketches/PullUp'
@@ -17,10 +20,9 @@ import Profile from './Profile'
 import UpdateProfile from './UpdateProfile'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import PrivateRoute from './components/private-route/PrivateRoute'
 import Menu from './components/Menu/Menu'
 import Home from './components/Menu/Home'
+import Record from './Record'
 
 // トークンをチェックしてユーザーのログインを維持する。
 if (localStorage.jwtToken) {
@@ -57,6 +59,7 @@ function App() {
             <PrivateRoute path="/dumbbell-raise" component={DumbbellRaise} />
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/update" component={UpdateProfile} />
+            <PrivateRoute path="/my-records" component={Record} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
           </Switch>
