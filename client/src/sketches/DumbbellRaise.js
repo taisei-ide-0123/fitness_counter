@@ -15,8 +15,23 @@ class DumbbellRaise extends Component {
       user: user.id,
       event: 'dumbbell raise',
       count: '',
+      total_dumbbell_raise_count: '',
     }
-    // console.log(this.state)
+  }
+
+  componentDidMount() {
+    axios
+      .get('/api/users/' + this.props.auth.user.id)
+      .then((response) => {
+        this.setState({
+          total_dumbbell_raise_count: response.data.total_dumbbell_raise_count,
+        })
+        // console.log(response.data)
+        // console.log(this.state.total_squat_count)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   render() {
@@ -99,10 +114,21 @@ class DumbbellRaise extends Component {
           event: this.state.event,
           count: count,
         }
-        console.log(this.state.user)
+        // console.log(this.state.user)
+        const dumbbell_raise_count = {
+          total_dumbbell_raise_count:
+            this.state.total_dumbbell_raise_count + count,
+        }
 
         axios
           .post('/api/counts/add/' + this.state.user, current_count)
+          .then((res) => console.log(res.data))
+
+        axios
+          .put(
+            '/api/users/total/dumbbell-raise/count/' + this.state.user,
+            dumbbell_raise_count,
+          )
           .then((res) => console.log(res.data))
 
         window.location = '/menu'
@@ -201,7 +227,7 @@ class DumbbellRaise extends Component {
           let r_radian = Math.acos(rESHS / Math.sqrt(rESn * rHSn))
           let r_angle = (r_radian * 180) / Math.PI // 結果（ラジアンから角度に変換）
 
-          console.log(l_angle)
+          // console.log(l_angle)
           // console.log(r_angle)
           if (l_angle <= 40 && r_angle <= 40) {
             should_count = true

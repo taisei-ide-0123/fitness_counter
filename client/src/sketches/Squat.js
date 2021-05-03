@@ -116,7 +116,7 @@ class Squat extends Component {
         const squat_count = {
           total_squat_count: this.state.total_squat_count + count,
         }
-        console.log(squat_count)
+        // console.log(squat_count)
         // console.log(current_count)
 
         axios

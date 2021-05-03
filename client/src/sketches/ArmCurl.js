@@ -15,8 +15,24 @@ class ArmCurl extends Component {
       user: user.id,
       event: 'arm curl',
       count: '',
+      total_arm_curl_count: '',
     }
     // console.log(this.state)
+  }
+
+  componentDidMount() {
+    axios
+      .get('/api/users/' + this.props.auth.user.id)
+      .then((response) => {
+        this.setState({
+          total_arm_curl_count: response.data.total_arm_curl_count,
+        })
+        // console.log(response.data)
+        // console.log(this.state.total_squat_count)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   render() {
@@ -99,10 +115,20 @@ class ArmCurl extends Component {
           event: this.state.event,
           count: count,
         }
-        console.log(this.state.user)
+        // console.log(this.state.user)
+        const arm_curl_count = {
+          total_arm_curl_count: this.state.total_arm_curl_count + count,
+        }
 
         axios
           .post('/api/counts/add/' + this.state.user, current_count)
+          .then((res) => console.log(res.data))
+
+        axios
+          .put(
+            '/api/users/total/arm-curl/count/' + this.state.user,
+            arm_curl_count,
+          )
           .then((res) => console.log(res.data))
 
         window.location = '/menu'
