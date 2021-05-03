@@ -23,6 +23,7 @@ import Login from './components/auth/Login'
 import Menu from './components/Menu/Menu'
 import Home from './components/Menu/Home'
 import Record from './Record'
+import Ranking from './components/Ranking/SquatRanking'
 
 // トークンをチェックしてユーザーのログインを維持する。
 if (localStorage.jwtToken) {
@@ -60,6 +61,7 @@ function App() {
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/update" component={UpdateProfile} />
             <PrivateRoute path="/my-records" component={Record} />
+            <Route exact path="/squat-ranking" component={Ranking} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
           </Switch>

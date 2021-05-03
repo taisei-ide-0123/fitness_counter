@@ -17,7 +17,7 @@ class RecordList extends Component {
       .then((response) => {
         this.setState({ records: response.data })
         // console.log(response.data)
-        console.log(this.state.records)
+        // console.log(this.state.records)
       })
       .catch((error) => {
         console.log(error)
