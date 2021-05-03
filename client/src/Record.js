@@ -15,18 +15,28 @@ class RecordList extends Component {
     axios
       .get('/api/counts/' + this.props.auth.user.id)
       .then((response) => {
-        // this.setState({ records: response.data })
-        console.log(response.data)
+        this.setState({ records: response.data })
+        // console.log(response.data)
+        console.log(this.state.records)
       })
       .catch((error) => {
         console.log(error)
       })
   }
 
-  // recordList() {
-  //   return this.state.records.map((currentrecord) => {
-  //     return <Record record={currentrecord} key={currentrecord._id} />
-  //   })
+  recordList() {
+    return this.state.records
+      .sort((a, b) => (a.date < b.date ? 1 : -1))
+      .map((currentrecord) => {
+        return (
+          <tr>
+            <td>{currentrecord.event}</td>
+            <td>{currentrecord.count}</td>
+            <td>{currentrecord.date.substring(0, 10)}</td>
+          </tr>
+        )
+      })
+  }
 
   render() {
     return (
@@ -41,7 +51,7 @@ class RecordList extends Component {
               <th>Date</th>
             </tr>
           </thead>
-          {/* <tbody>{this.recordList()}</tbody> */}
+          <tbody>{this.recordList()}</tbody>
         </table>
       </div>
     )
