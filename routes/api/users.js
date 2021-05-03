@@ -153,7 +153,7 @@ router.route('/update/:id').put(upload.single('img'), (req, res) => {
     .catch((err) => res.status(400).json('Error: ' + err))
 })
 
-// TOTAL AQUAT COUNT UPDATE
+// TOTAL SQUAT COUNT UPDATE
 router.route('/total/squat/count/:id').put((req, res) => {
   User.findByIdAndUpdate(req.params.id)
     .then((user) => {
@@ -163,6 +163,66 @@ router.route('/total/squat/count/:id').put((req, res) => {
       user
         .save()
         .then(() => res.json('Total squat count updated!'))
+        .catch((err) => res.status(400).json('Error: ' + err))
+    })
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
+
+// TOTAL PUSH UP COUNT UPDATE
+router.route('/total/push-up/count/:id').put((req, res) => {
+  User.findByIdAndUpdate(req.params.id)
+    .then((user) => {
+      // console.log(user)
+      user.total_push_up_count = req.body.total_push_up_count
+      // console.log(req.body)
+      user
+        .save()
+        .then(() => res.json('Total push count updated!'))
+        .catch((err) => res.status(400).json('Error: ' + err))
+    })
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
+
+// TOTAL PULL UP COUNT UPDATE
+router.route('/total/pull-up/count/:id').put((req, res) => {
+  User.findByIdAndUpdate(req.params.id)
+    .then((user) => {
+      // console.log(user)
+      user.total_pull_up_count = req.body.total_pull_up_count
+      // console.log(req.body)
+      user
+        .save()
+        .then(() => res.json('Total pull up count updated!'))
+        .catch((err) => res.status(400).json('Error: ' + err))
+    })
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
+
+// TOTAL ARM CURL COUNT UPDATE
+router.route('/total/arm-curl/count/:id').put((req, res) => {
+  User.findByIdAndUpdate(req.params.id)
+    .then((user) => {
+      // console.log(user)
+      user.total_arm_curl_count = req.body.total_arm_curl_count
+      // console.log(req.body)
+      user
+        .save()
+        .then(() => res.json('Total arm curl count updated!'))
+        .catch((err) => res.status(400).json('Error: ' + err))
+    })
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
+
+// TOTAL DUMBBELL RAISE COUNT UPDATE
+router.route('/total/dumbbell-raise/count/:id').put((req, res) => {
+  User.findByIdAndUpdate(req.params.id)
+    .then((user) => {
+      // console.log(user)
+      user.total_dumbbell_raise_count = req.body.total_dumbbell_raise_count
+      // console.log(req.body)
+      user
+        .save()
+        .then(() => res.json('Total dumbbell raise count updated!'))
         .catch((err) => res.status(400).json('Error: ' + err))
     })
     .catch((err) => res.status(400).json('Error: ' + err))

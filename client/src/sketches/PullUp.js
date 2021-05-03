@@ -15,8 +15,24 @@ class PullUp extends Component {
       user: user.id,
       event: 'pull up',
       count: '',
+      total_pull_up_count: '',
     }
     // console.log(this.state)
+  }
+
+  componentDidMount() {
+    axios
+      .get('/api/users/' + this.props.auth.user.id)
+      .then((response) => {
+        this.setState({
+          total_pull_up_count: response.data.total_pull_up_count,
+        })
+        // console.log(response.data)
+        // console.log(this.state.total_squat_count)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   render() {
@@ -99,10 +115,20 @@ class PullUp extends Component {
           event: this.state.event,
           count: count,
         }
-        console.log(this.state.user)
+        // console.log(this.state.user)
+        const pull_up_count = {
+          total_pull_up_count: this.state.total_pull_up_count + count,
+        }
 
         axios
           .post('/api/counts/add/' + this.state.user, current_count)
+          .then((res) => console.log(res.data))
+
+        axios
+          .put(
+            '/api/users/total/pull-up/count/' + this.state.user,
+            pull_up_count,
+          )
           .then((res) => console.log(res.data))
 
         window.location = '/menu'
@@ -188,7 +214,7 @@ class PullUp extends Component {
           let radian = Math.acos(lESHS / Math.sqrt(lESn * lHSn))
           let angle = (radian * 180) / Math.PI // 結果（ラジアンから角度に変換）
 
-          console.log(angle)
+          // console.log(angle)
           if (angle >= 110) {
             should_count = true
           } else if (angle <= 80 && should_count) {
