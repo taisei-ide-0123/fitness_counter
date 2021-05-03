@@ -29,18 +29,23 @@ const UserSchema = new Schema({
   },
   total_squat_count: {
     type: Number,
+    default: 0,
   },
   total_push_up_count: {
     type: Number,
+    default: 0,
   },
   total_pull_up_count: {
     type: Number,
+    default: 0,
   },
   total_arm_curl_count: {
     type: Number,
+    default: 0,
   },
   total_dumbbell_raise_count: {
     type: Number,
+    default: 0,
   },
 })
 
