@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setCurrentUser } from '../../actions/authActions'
 
-class SquatRanking extends Component {
+class PushUpRanking extends Component {
   constructor(props) {
     super(props)
     this.state = { users: [] }
@@ -18,7 +18,7 @@ class SquatRanking extends Component {
       .then((response) => {
         this.setState({ users: response.data })
         // console.log(response.data)
-        console.log(this.state.users)
+        // console.log(this.state.records)
       })
       .catch((error) => {
         console.log(error)
@@ -27,13 +27,13 @@ class SquatRanking extends Component {
 
   rankList() {
     return this.state.users
-      .sort((a, b) => (a.total_squat_count < b.total_squat_count ? 1 : -1))
+      .sort((a, b) => (a.total_push_up_count < b.total_push_up_count ? 1 : -1))
       .map((user, i) => {
         return (
           <tr>
             <td>{i + 1}</td>
             <td>{user.name}</td>
-            <td>{user.total_squat_count}</td>
+            <td>{user.total_push_up_count}</td>
           </tr>
         )
       })
@@ -44,7 +44,7 @@ class SquatRanking extends Component {
       <div>
         <Nav />
         <h3 className="bold" style={{ fontFamily: 'GillSans' }}>
-          SQUAT RANKING
+          PUSH UP RANKING
         </h3>
         <RankingMenu />
         <div className="container">
@@ -64,7 +64,7 @@ class SquatRanking extends Component {
   }
 }
 
-SquatRanking.propTypes = {
+PushUpRanking.propTypes = {
   setCurrentUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
 }
@@ -73,4 +73,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 })
 
-export default connect(mapStateToProps, { setCurrentUser })(SquatRanking)
+export default connect(mapStateToProps, { setCurrentUser })(PushUpRanking)
