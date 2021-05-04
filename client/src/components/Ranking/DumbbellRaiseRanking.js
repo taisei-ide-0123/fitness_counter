@@ -48,18 +48,20 @@ class DumbellRaiseRanking extends Component {
         <h3 className="bold" style={{ fontFamily: 'GillSans' }}>
           DUMBBELL RAISE RANKING
         </h3>
-        <RankingMenu />
         <div className="container">
-          <table className="table highlight centered">
-            <thead>
-              <tr className="deep-orange lighten-1">
-                <th>Rank</th>
-                <th>Name</th>
-                <th>Count</th>
-              </tr>
-            </thead>
-            <tbody>{this.rankList()}</tbody>
-          </table>
+          <div className="card">
+            <RankingMenu />
+            <table className="table highlight centered">
+              <thead>
+                <tr className="deep-orange lighten-1">
+                  <th>Rank</th>
+                  <th>Name</th>
+                  <th>Count</th>
+                </tr>
+              </thead>
+              <tbody>{this.rankList()}</tbody>
+            </table>
+          </div>
         </div>
       </div>
     )

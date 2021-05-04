@@ -1,62 +1,71 @@
 import React, { Component } from 'react'
-import './Nav.css'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 
 class LogoutNav extends Component {
+  componentDidMount() {
+    const M = window.M
+    document.addEventListener('DOMContentLoaded', function () {
+      const elems = document.querySelectorAll('.sidenav')
+      const instances = M.Sidenav.init(elems, { edge: 'right' })
+    })
+  }
+
   render() {
     return (
       <div>
         <nav>
-          <Link style={{ color: '#ff5722', textDecoration: 'none' }} to="/menu">
-            <h3>Fithabit</h3>
-          </Link>
-          <ul>
+          <div className="nav-wrapper deep-orange lighten-1">
             <Link
-              style={{
-                color: '#ff5722',
-                textDecoration: 'none',
-                listStyle: 'none',
-                fontSize: '20px',
-              }}
-              to="/squat-ranking"
+              href="#"
+              data-target="slide-out"
+              className="sidenav-trigger show-on-large"
             >
-              <li>Ranking</li>
+              <i className="material-icons">menu</i>
             </Link>
+
             <Link
-              style={{
-                color: '#ff5722',
-                textDecoration: 'none',
-                listStyle: 'none',
-                fontSize: '20px',
-              }}
-              to="/my-records"
+              className="brand-logo center"
+              style={{ color: '#fff', textDecoration: 'none' }}
+              to="/menu"
             >
-              <li>Record</li>
+              Fithabit
             </Link>
-            <Link
-              style={{
-                color: '#ff5722',
-                textDecoration: 'none',
-                listStyle: 'none',
-                fontSize: '20px',
-              }}
-              to="/profile"
-            >
-              <li>Profile</li>
-            </Link>
-            <Link
-              to="/login"
-              style={{
-                color: '#ff5722',
-                textDecoration: 'none',
-                listStyle: 'none',
-                fontSize: '20px',
-              }}
-            >
-              <li>Login</li>
-            </Link>
-          </ul>
+            <ul className="right hide-on-med-and-down" id="nav-mobile">
+              <Link
+                to="/login"
+                style={{
+                  color: '#fff',
+                  textDecoration: 'none',
+                  listStyle: 'none',
+                  fontSize: '20px',
+                }}
+              >
+                <li>
+                  <FontAwesomeIcon icon={faSignInAlt} />
+                </li>
+              </Link>
+            </ul>
+          </div>
         </nav>
+
+        <ul id="slide-out" className="sidenav">
+          <Link
+            to="/login"
+            style={{
+              color: '#000',
+              textDecoration: 'none',
+              listStyle: 'none',
+              fontSize: '20px',
+            }}
+          >
+            <li>
+              Login&nbsp;
+              <FontAwesomeIcon icon={faSignInAlt} />
+            </li>
+          </Link>
+        </ul>
       </div>
     )
   }
