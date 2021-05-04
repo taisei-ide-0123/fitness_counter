@@ -5,73 +5,38 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setCurrentUser } from '../../actions/authActions'
 
-class Ranking extends Component {
+class SquatRanking extends Component {
   constructor(props) {
     super(props)
-    this.state = { records: [] }
     this.state = { users: [] }
   }
 
   componentDidMount() {
     axios
-      .get('/api/counts/squat/ranking')
-      .then((response) => {
-        this.setState({ records: response.data })
-        const totalScoreList = this.state.records.map((record, i) => {
-          return (
-            <div>
-              <div></div>
-            </div>
-          )
-        })
-        console.log(totalScoreList)
-        // console.log(response.data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-
-    axios
-      .get('/api/users')
+      .get('/api/users/squat/ranking/')
       .then((response) => {
         this.setState({ users: response.data })
-        // console.log(this.state.users)
+        // console.log(response.data)
+        // console.log(this.state.records)
       })
       .catch((error) => {
         console.log(error)
       })
   }
 
-  totalCount() {
-    return this.state.records
-      .sort((a, b) => (a.date < b.date ? 1 : -1))
-      .map((totalrecord) => {
+  rankList() {
+    return this.state.users
+      .sort((a, b) => (a.total_squat_count < b.total_squat_count ? 1 : -1))
+      .map((user, i) => {
         return (
           <tr>
-            <td>{totalrecord.event}</td>
-            <td>{totalrecord.count}</td>
-            <td>{totalrecord.date.substring(0, 10)}</td>
+            <td>{i + 1}</td>
+            <td>{user.name}</td>
+            <td>{user.total_squat_count}</td>
           </tr>
         )
       })
   }
-
-  // rankingList() {
-  //   console.log(this.state.records)
-  //   if (this.state.records.user) {
-  //   }
-  //   //   return this.state.records
-  //   //     .sort((a, b) => (a.date < b.date ? 1 : -1))
-  //   //     .map((currentrecord) => {
-  //   //       return (
-  //   //         <tr>
-  //   //           <td>{currentrecord.event}</td>
-  //   //           <td>{currentrecord.count}</td>
-  //   //           <td>{currentrecord.date.substring(0, 10)}</td>
-  //   //         </tr>
-  //   //       )
-  //   //     })
-  // }
 
   render() {
     return (
@@ -85,11 +50,11 @@ class Ranking extends Component {
             <thead>
               <tr className="deep-orange lighten-1">
                 <th>Rank</th>
-                <th>User</th>
+                <th>Name</th>
                 <th>Count</th>
               </tr>
             </thead>
-            {/* <tbody>{this.recordList()}</tbody> */}
+            <tbody>{this.rankList()}</tbody>
           </table>
         </div>
       </div>
@@ -97,7 +62,7 @@ class Ranking extends Component {
   }
 }
 
-Ranking.propTypes = {
+SquatRanking.propTypes = {
   setCurrentUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
 }
@@ -106,4 +71,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 })
 
-export default connect(mapStateToProps, { setCurrentUser })(Ranking)
+export default connect(mapStateToProps, { setCurrentUser })(SquatRanking)
