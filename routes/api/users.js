@@ -228,4 +228,11 @@ router.route('/total/dumbbell-raise/count/:id').put((req, res) => {
     .catch((err) => res.status(400).json('Error: ' + err))
 })
 
+// SQUAT RANKING
+router.route('/squat/ranking/').get((req, res) => {
+  User.find()
+    .then((user) => res.json(user))
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
+
 module.exports = router
