@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Nav from '../Nav'
+import RankingMenu from './RankingMenu'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setCurrentUser } from '../../actions/authActions'
@@ -46,6 +47,7 @@ class SquatRanking extends Component {
           SQUAT RANKING
         </h3>
         <div className="container">
+          <RankingMenu />
           <table className="table highlight centered">
             <thead>
               <tr className="deep-orange lighten-1">
