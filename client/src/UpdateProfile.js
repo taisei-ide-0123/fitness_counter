@@ -4,7 +4,6 @@ import Nav from './components/Nav'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setCurrentUser } from './actions/authActions'
-import DefaultImg from './DefaultProfile.png'
 
 class UpdateProfile extends Component {
   constructor(props) {
@@ -39,6 +38,7 @@ class UpdateProfile extends Component {
           birthday: response.data.birthday,
           img: response.data.img,
         })
+        console.log(response.data.img)
       })
       .catch(function (error) {
         console.log(error)
@@ -101,7 +101,7 @@ class UpdateProfile extends Component {
       this.setState({
         img: e.target.files[0],
       })
-      // console.log(e.target.files[0])
+      console.log(e.target.files[0])
       if (file) {
         const reader = new FileReader()
         const { current } = uploadedImage
@@ -139,7 +139,6 @@ class UpdateProfile extends Component {
                     <input
                       type="file"
                       accept="image/*"
-                      // value={this.state.img}
                       // onChangeImg={this.onChangeImg}
                       name="img"
                       onChange={handleImageUpload}
@@ -160,7 +159,7 @@ class UpdateProfile extends Component {
                       onClick={() => imageUploader.current.click()}
                     >
                       <img
-                        src={DefaultImg}
+                        src={this.state.img}
                         ref={uploadedImage}
                         style={{
                           width: '100%',

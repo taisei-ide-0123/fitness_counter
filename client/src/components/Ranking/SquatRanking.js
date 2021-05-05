@@ -46,7 +46,6 @@ class SquatRanking extends Component {
         <h3 className="bold" style={{ fontFamily: 'GillSans' }}>
           SQUAT RANKING
         </h3>
-
         <div className="container">
           <div className="card">
             <RankingMenu />
