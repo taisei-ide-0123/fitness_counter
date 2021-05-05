@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
-// import '../Nav.css'
 import { Link } from 'react-router-dom'
+import SquatIcon from '../icon/squat-icon.png'
+import PushUpIcon from '../icon/push-up-icon.png'
+import PullUpIcon from '../icon/pull-up-icon.png'
+import ArmCurlIcon from '../icon/arm-curl-icon.png'
+import DumbbellRaiseIcon from '../icon/dumbbell-raise-icon.png'
 
 class RankingMenu extends Component {
   render() {
@@ -24,7 +28,14 @@ class RankingMenu extends Component {
                 }}
                 to="/squat-ranking"
               >
-                <li>Squat</li>
+                <li>
+                  <img
+                    src={SquatIcon}
+                    alt="squat icon"
+                    className="responsive-img"
+                    style={{ width: '30px', height: '30px' }}
+                  />
+                </li>
               </Link>
               <Link
                 style={{
@@ -35,7 +46,14 @@ class RankingMenu extends Component {
                 }}
                 to="/push-up-ranking"
               >
-                <li>Push Up</li>
+                <li>
+                  <img
+                    src={PushUpIcon}
+                    alt="push up icon"
+                    className="responsive-img"
+                    style={{ width: '30px', height: '30px' }}
+                  />
+                </li>
               </Link>
               <Link
                 style={{
@@ -46,7 +64,14 @@ class RankingMenu extends Component {
                 }}
                 to="/pull-up-ranking"
               >
-                <li>Pull Up</li>
+                <li>
+                  <img
+                    src={PullUpIcon}
+                    alt="pull up icon"
+                    className="responsive-img"
+                    style={{ width: '30px', height: '30px' }}
+                  />
+                </li>
               </Link>
               <Link
                 style={{
@@ -57,7 +82,14 @@ class RankingMenu extends Component {
                 }}
                 to="/arm-curl-ranking"
               >
-                <li>Arm Curl</li>
+                <li>
+                  <img
+                    src={ArmCurlIcon}
+                    alt="arm curl icon"
+                    className="responsive-img"
+                    style={{ width: '30px', height: '30px' }}
+                  />
+                </li>
               </Link>
               <Link
                 style={{
@@ -68,7 +100,14 @@ class RankingMenu extends Component {
                 }}
                 to="/dumbbell-raise-ranking"
               >
-                <li>Dumbbell Raise</li>
+                <li>
+                  <img
+                    src={DumbbellRaiseIcon}
+                    alt="dumbbell raise icon"
+                    className="responsive-img"
+                    style={{ width: '30px', height: '30px' }}
+                  />
+                </li>
               </Link>
             </ul>
           </div>
