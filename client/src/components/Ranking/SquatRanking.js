@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Nav from '../Nav'
+import RankingMenu from './RankingMenu'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setCurrentUser } from '../../actions/authActions'
@@ -17,7 +18,7 @@ class SquatRanking extends Component {
       .then((response) => {
         this.setState({ users: response.data })
         // console.log(response.data)
-        // console.log(this.state.records)
+        console.log(this.state.users)
       })
       .catch((error) => {
         console.log(error)
@@ -45,17 +46,21 @@ class SquatRanking extends Component {
         <h3 className="bold" style={{ fontFamily: 'GillSans' }}>
           SQUAT RANKING
         </h3>
+
         <div className="container">
-          <table className="table highlight centered">
-            <thead>
-              <tr className="deep-orange lighten-1">
-                <th>Rank</th>
-                <th>Name</th>
-                <th>Count</th>
-              </tr>
-            </thead>
-            <tbody>{this.rankList()}</tbody>
-          </table>
+          <div className="card">
+            <RankingMenu />
+            <table className="table highlight centered">
+              <thead>
+                <tr className="deep-orange lighten-1">
+                  <th>Rank</th>
+                  <th>Name</th>
+                  <th>Count</th>
+                </tr>
+              </thead>
+              <tbody>{this.rankList()}</tbody>
+            </table>
+          </div>
         </div>
       </div>
     )

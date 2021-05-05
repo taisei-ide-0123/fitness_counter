@@ -1,11 +1,25 @@
 import React, { Component } from 'react'
-import './Nav.css'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { logoutUser } from '../actions/authActions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faCrown,
+  faClipboard,
+  faUser,
+  faSignOutAlt,
+} from '@fortawesome/free-solid-svg-icons'
 
 class Nav extends Component {
+  componentDidMount() {
+    const M = window.M
+    document.addEventListener('DOMContentLoaded', function () {
+      const elems = document.querySelectorAll('.sidenav')
+      const instances = M.Sidenav.init(elems, { edge: 'right' })
+    })
+  }
+
   onLogoutClick = (e) => {
     e.preventDefault()
     this.props.logoutUser()
@@ -15,56 +29,137 @@ class Nav extends Component {
     return (
       <div>
         <nav>
-          <Link style={{ color: '#ff5722', textDecoration: 'none' }} to="/menu">
-            <h3>Fithabit</h3>
-          </Link>
-          <ul>
+          <div className="nav-wrapper deep-orange lighten-1">
             <Link
-              style={{
-                color: '#ff5722',
-                textDecoration: 'none',
-                listStyle: 'none',
-                fontSize: '20px',
-              }}
-              to="/squat-ranking"
+              href="#"
+              data-target="slide-out"
+              className="sidenav-trigger show-on-large"
             >
-              <li>Ranking</li>
+              <i className="material-icons">menu</i>
             </Link>
+
             <Link
-              style={{
-                color: '#ff5722',
-                textDecoration: 'none',
-                listStyle: 'none',
-                fontSize: '20px',
-              }}
-              to="/my-records"
+              className="brand-logo center"
+              style={{ color: '#fff', textDecoration: 'none' }}
+              to="/menu"
             >
-              <li>Record</li>
+              Fithabit
             </Link>
-            <Link
-              style={{
-                color: '#ff5722',
-                textDecoration: 'none',
-                listStyle: 'none',
-                fontSize: '20px',
-              }}
-              to="/profile"
-            >
-              <li>Profile</li>
-            </Link>
-            <Link
-              onClick={this.onLogoutClick}
-              style={{
-                color: '#ff5722',
-                textDecoration: 'none',
-                listStyle: 'none',
-                fontSize: '20px',
-              }}
-            >
-              <li>Logout</li>
-            </Link>
-          </ul>
+            <ul className="right hide-on-med-and-down" id="nav-mobile">
+              <li>
+                <Link
+                  style={{
+                    color: '#fff',
+                    textDecoration: 'none',
+                    listStyle: 'none',
+                    fontSize: '20px',
+                  }}
+                  to="/squat-ranking"
+                >
+                  <FontAwesomeIcon icon={faCrown} />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  style={{
+                    color: '#fff',
+                    textDecoration: 'none',
+                    listStyle: 'none',
+                    fontSize: '20px',
+                  }}
+                  to="/my-records"
+                >
+                  <FontAwesomeIcon icon={faClipboard} />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  style={{
+                    color: '#fff',
+                    textDecoration: 'none',
+                    listStyle: 'none',
+                    fontSize: '20px',
+                  }}
+                  to="/profile"
+                >
+                  <FontAwesomeIcon icon={faUser} />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  onClick={this.onLogoutClick}
+                  style={{
+                    color: '#fff',
+                    textDecoration: 'none',
+                    listStyle: 'none',
+                    fontSize: '20px',
+                  }}
+                >
+                  <FontAwesomeIcon icon={faSignOutAlt} />
+                </Link>
+              </li>
+            </ul>
+          </div>
         </nav>
+
+        <ul id="slide-out" className="sidenav">
+          <Link
+            style={{
+              color: '#000',
+              textDecoration: 'none',
+              listStyle: 'none',
+              fontSize: '20px',
+            }}
+            to="/squat-ranking"
+          >
+            <li>
+              Ranking&nbsp;
+              <FontAwesomeIcon icon={faCrown} />
+            </li>
+          </Link>
+          <Link
+            style={{
+              color: '#000',
+              textDecoration: 'none',
+              listStyle: 'none',
+              fontSize: '20px',
+            }}
+            to="/my-records"
+          >
+            <li>
+              Record&nbsp;
+              <FontAwesomeIcon icon={faClipboard} />
+            </li>
+          </Link>
+          <Link
+            style={{
+              color: '#000',
+              textDecoration: 'none',
+              listStyle: 'none',
+              fontSize: '20px',
+            }}
+            to="/profile"
+          >
+            <li>
+              Profile&nbsp;
+              <FontAwesomeIcon icon={faUser} />
+            </li>
+          </Link>
+          <Link
+            onClick={this.onLogoutClick}
+            style={{
+              color: '#000',
+              textDecoration: 'none',
+              listStyle: 'none',
+              fontSize: '20px',
+            }}
+          >
+            <li>
+              Logout&nbsp;
+              <FontAwesomeIcon icon={faSignOutAlt} />
+            </li>
+          </Link>
+        </ul>
       </div>
     )
   }

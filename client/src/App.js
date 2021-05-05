@@ -24,6 +24,10 @@ import Menu from './components/Menu/Menu'
 import Home from './components/Menu/Home'
 import Record from './Record'
 import Ranking from './components/Ranking/SquatRanking'
+import PushUpRanking from './components/Ranking/PushUpRanking'
+import PullUpRanking from './components/Ranking/PullUpRanking'
+import ArmCurlRanking from './components/Ranking/ArmCurlRanking'
+import DumbbellRaiseRanking from './components/Ranking/DumbbellRaiseRanking'
 
 // トークンをチェックしてユーザーのログインを維持する。
 if (localStorage.jwtToken) {
@@ -61,7 +65,27 @@ function App() {
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/update" component={UpdateProfile} />
             <PrivateRoute path="/my-records" component={Record} />
-            <Route exact path="/squat-ranking" component={Ranking} />
+            <PrivateRoute exact path="/squat-ranking" component={Ranking} />
+            <PrivateRoute
+              exact
+              path="/push-up-ranking"
+              component={PushUpRanking}
+            />
+            <PrivateRoute
+              exact
+              path="/pull-up-ranking"
+              component={PullUpRanking}
+            />
+            <PrivateRoute
+              exact
+              path="/arm-curl-ranking"
+              component={ArmCurlRanking}
+            />
+            <PrivateRoute
+              exact
+              path="/dumbbell-raise-ranking"
+              component={DumbbellRaiseRanking}
+            />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
           </Switch>

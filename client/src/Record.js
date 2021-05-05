@@ -46,16 +46,18 @@ class RecordList extends Component {
           Training Record
         </h3>
         <div className="container">
-          <table className="table highlight centered">
-            <thead>
-              <tr className="deep-orange lighten-1">
-                <th>Event</th>
-                <th>Count</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>{this.recordList()}</tbody>
-          </table>
+          <div className="card">
+            <table className="table highlight centered">
+              <thead>
+                <tr className="deep-orange lighten-1">
+                  <th>Event</th>
+                  <th>Count</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>{this.recordList()}</tbody>
+            </table>
+          </div>
         </div>
       </div>
     )
