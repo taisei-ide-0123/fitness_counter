@@ -10,14 +10,17 @@ import {
   faUser,
   faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons'
+import $ from 'jquery'
+
+if (typeof window !== 'undefined') {
+  window.$ = $
+  window.jQuery = $
+  require('materialize-css')
+}
 
 class Nav extends Component {
   componentDidMount() {
-    const M = window.M
-    document.addEventListener('DOMContentLoaded', function () {
-      const elems = document.querySelectorAll('.sidenav')
-      const instances = M.Sidenav.init(elems, { edge: 'right' })
-    })
+    $('.sidenav').sidenav()
   }
 
   onLogoutClick = (e) => {
@@ -31,7 +34,7 @@ class Nav extends Component {
         <nav>
           <div className="nav-wrapper deep-orange lighten-1">
             <Link
-              href="#"
+              // href="#"
               data-target="slide-out"
               className="sidenav-trigger show-on-large"
             >

@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
+import $ from 'jquery'
+
+if (typeof window !== 'undefined') {
+  window.$ = $
+  window.jQuery = $
+  require('materialize-css')
+}
 
 class LogoutNav extends Component {
   componentDidMount() {
-    const M = window.M
-    document.addEventListener('DOMContentLoaded', function () {
-      const elems = document.querySelectorAll('.sidenav')
-      const instances = M.Sidenav.init(elems, { edge: 'right' })
-    })
+    $('.sidenav').sidenav()
   }
 
   render() {
