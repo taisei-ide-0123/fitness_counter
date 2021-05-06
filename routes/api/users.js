@@ -4,6 +4,9 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const keys = require('../../config/keys')
 
+const cloudinary = require('../../utils/cloudinary')
+const upload = require('../../utils/multer')
+
 // Load input validation
 const validateRegisterInput = require('../../validation/register')
 const validateLoginInput = require('../../validation/login')
@@ -114,13 +117,25 @@ router.route('/:id').get((req, res) => {
     .catch((err) => res.status(400).json('Error: ' + err))
 })
 
-router.route('/update/:id').put((req, res) => {
+router.route('/update/:id').put(upload.single('image'), (req, res) => {
   User.findByIdAndUpdate(req.params.id)
     .then((user) => {
       user.name = req.body.name
       user.email = req.body.email
       user.birthday = req.body.birthday
-      user.img = req.body.img
+      console.log(req.body)
+
+      // Delete image from cloudinary
+      cloudinary.uploader.destroy(user.cloudinary_id)
+
+      // Upload image to cloudinary
+      const result = cloudinary.uploader.upload(
+        req.body.img,
+        (folder) => 'Fithabit',
+      )
+
+      user.img = result.secure_url
+      user.cloudinary_id = result.public_id
 
       user
         .save()
