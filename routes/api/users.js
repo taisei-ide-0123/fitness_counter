@@ -119,20 +119,26 @@ router.route('/:id').get((req, res) => {
 
 router.route('/update/:id').put(upload.single('image'), (req, res) => {
   User.findByIdAndUpdate(req.params.id)
-    .then((user) => {
+    .then(async (user) => {
       user.name = req.body.name
       user.email = req.body.email
       user.birthday = req.body.birthday
-      console.log(req.body)
+      // console.log(req.body)
 
       // Delete image from cloudinary
       cloudinary.uploader.destroy(user.cloudinary_id)
 
       // Upload image to cloudinary
-      const result = cloudinary.uploader.upload(
+      const result = await cloudinary.uploader.upload(
         req.body.img,
-        (folder) => 'Fithabit',
+        {
+          folder: 'Fithabit',
+        },
+        function (error, result) {
+          // console.log(result, error)
+        },
       )
+      // console.log(result)
 
       user.img = result.secure_url
       user.cloudinary_id = result.public_id
