@@ -86,7 +86,12 @@ router.post('/login', (req, res) => {
           email: user.email,
           birthday: user.birthday,
           img: user.img,
+          cloudinary_id: user.cloudinary_id,
           total_squat_count: user.total_squat_count,
+          total_push_up_count: user.total_push_up_count,
+          total_pull_up_count: user.total_pull_up_count,
+          total_arm_curl_count: user.total_arm_curl_count,
+          total_dumbbell_raise_count: user.total_dumbbell_raise_count,
         }
 
         // Sign token
@@ -124,24 +129,41 @@ router.route('/update/:id').put(upload.single('image'), (req, res) => {
       user.email = req.body.email
       user.birthday = req.body.birthday
       // console.log(req.body)
+      console.log(user.cloudinary_id)
 
-      // Delete image from cloudinary
-      await cloudinary.uploader.destroy(user.cloudinary_id)
+      if (user.cloudinary_id != undefined) {
+        // Delete image from cloudinary
+        await cloudinary.uploader.destroy(user.cloudinary_id)
 
-      // Upload image to cloudinary
-      const result = await cloudinary.uploader.upload(
-        req.body.img,
-        {
-          folder: 'Fithabit',
-        },
-        function (error, result) {
-          // console.log(result, error)
-        },
-      )
-      // console.log(result)
-
-      user.img = result.secure_url
-      user.cloudinary_id = result.public_id
+        // Upload image to cloudinary
+        const result = await cloudinary.uploader.upload(
+          req.body.img,
+          {
+            folder: 'Fithabit',
+          },
+          function (error, result) {
+            // console.log(result, error)
+          },
+        )
+        // console.log(result)
+        user.img = result.secure_url
+        user.cloudinary_id = result.public_id
+      } else {
+        // Profile image unsetted
+        // Upload image to cloudinary
+        const result = await cloudinary.uploader.upload(
+          req.body.img,
+          {
+            folder: 'Fithabit',
+          },
+          function (error, result) {
+            // console.log(result, error)
+          },
+        )
+        // console.log(result)
+        user.img = result.secure_url
+        user.cloudinary_id = result.public_id
+      }
 
       user
         .save()
