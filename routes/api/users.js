@@ -126,7 +126,7 @@ router.route('/update/:id').put(upload.single('image'), (req, res) => {
       // console.log(req.body)
 
       // Delete image from cloudinary
-      cloudinary.uploader.destroy(user.cloudinary_id)
+      await cloudinary.uploader.destroy(user.cloudinary_id)
 
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(
