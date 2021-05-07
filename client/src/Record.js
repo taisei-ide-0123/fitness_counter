@@ -42,11 +42,14 @@ class RecordList extends Component {
     return (
       <div>
         <Nav />
-        <h3 className="bold" style={{ fontFamily: 'GillSans' }}>
-          Training Record
-        </h3>
         <div className="container">
           <div className="card">
+            <h3
+              className="bold deep-orange lighten-1"
+              style={{ fontFamily: 'GillSans', marginBottom: 0 }}
+            >
+              Training Record
+            </h3>
             <table className="table highlight centered">
               <thead>
                 <tr className="deep-orange lighten-1">

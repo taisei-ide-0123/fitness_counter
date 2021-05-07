@@ -4,7 +4,6 @@ import Nav from './components/Nav'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setCurrentUser } from './actions/authActions'
-import DefaultImg from './DefaultProfile.png'
 
 class UpdateProfile extends Component {
   constructor(props) {
@@ -39,6 +38,7 @@ class UpdateProfile extends Component {
           birthday: response.data.birthday,
           img: response.data.img,
         })
+        console.log()
       })
       .catch(function (error) {
         console.log(error)
@@ -84,12 +84,13 @@ class UpdateProfile extends Component {
       birthday: this.state.birthday,
       img: this.state.img,
     }
+    // console.log(this.state.img)
 
     axios
       .put('/api/users/update/' + this.props.auth.user.id, user)
       .then((res) => console.log(res.data))
 
-    window.location = '/profile'
+    // window.location = '/profile'
   }
 
   render() {
@@ -98,16 +99,17 @@ class UpdateProfile extends Component {
 
     const handleImageUpload = (e) => {
       const [file] = e.target.files
-      this.setState({
-        img: e.target.files[0],
-      })
-      // console.log(e.target.files[0])
+
       if (file) {
         const reader = new FileReader()
         const { current } = uploadedImage
         current.file = file
         reader.onload = (e) => {
           current.src = e.target.result
+          // console.log(current.src)
+          this.setState({
+            img: current.src,
+          })
         }
         reader.readAsDataURL(file)
       }
@@ -139,7 +141,6 @@ class UpdateProfile extends Component {
                     <input
                       type="file"
                       accept="image/*"
-                      // value={this.state.img}
                       // onChangeImg={this.onChangeImg}
                       name="img"
                       onChange={handleImageUpload}
@@ -160,7 +161,7 @@ class UpdateProfile extends Component {
                       onClick={() => imageUploader.current.click()}
                     >
                       <img
-                        src={DefaultImg}
+                        src={this.state.img}
                         ref={uploadedImage}
                         style={{
                           width: '100%',
@@ -178,6 +179,7 @@ class UpdateProfile extends Component {
                       type="text"
                       value={this.state.name}
                       onChange={this.onChangeName}
+                      id="name"
                     ></input>
                     <label htmlFor="name">
                       <i className="material-icons left">person</i>Name
@@ -189,6 +191,7 @@ class UpdateProfile extends Component {
                       type="text"
                       value={this.state.email}
                       onChange={this.onChangeEmail}
+                      id="email"
                     />
                     <label htmlFor="email">
                       <i className="material-icons left">mail</i>Email
@@ -200,6 +203,7 @@ class UpdateProfile extends Component {
                       type="text"
                       value={this.state.birthday}
                       onChange={this.onChangeBirthday}
+                      id="birthday"
                     />
                     <label htmlFor="birthday">
                       <i className="material-icons left">event_note</i>Birthday

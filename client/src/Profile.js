@@ -52,7 +52,7 @@ class Profile extends Component {
                 <div className="input-field col s12">
                   <input
                     disabled
-                    id="disabled"
+                    id="name"
                     type="text"
                     class="validate"
                     placeholder={this.state.name}
@@ -64,7 +64,7 @@ class Profile extends Component {
                 <div className="input-field col s12">
                   <input
                     disabled
-                    id="disabled"
+                    id="email"
                     type="text"
                     class="validate"
                     placeholder={this.state.email}
@@ -76,7 +76,7 @@ class Profile extends Component {
                 <div className="input-field col s12">
                   <input
                     disabled
-                    id="disabled"
+                    id="birthday"
                     type="text"
                     class="validate"
                     placeholder={this.state.birthday}

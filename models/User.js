@@ -16,8 +16,12 @@ const UserSchema = new Schema({
     required: true,
   },
   img: {
-    data: Buffer,
-    contentType: String,
+    type: String,
+    default:
+      'https://res.cloudinary.com/dqangiuk1/image/upload/v1620200380/Fithabit/DefaultProfile_lazvx5.png',
+  },
+  cloudinary_id: {
+    type: String,
   },
   birthday: {
     type: String,
