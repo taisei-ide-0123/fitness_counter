@@ -34,7 +34,6 @@ class Nav extends Component {
         <nav>
           <div className="nav-wrapper deep-orange lighten-1">
             <Link
-              // href="#"
               data-target="slide-out"
               className="sidenav-trigger show-on-large"
             >
