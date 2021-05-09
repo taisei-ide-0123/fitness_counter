@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './Menu.css'
-import Nav from '../HomeNav'
+import Nav from '../Nav/HomeNav'
 import SQUAT from '../../Squat.jpg'
 import PUSHUP from '../../PushUp.jpg'
 import PULLUP from '../../PullUp.jpg'

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Nav from './components/Nav'
+import RecordNav from './components/Nav/RecordNav'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setCurrentUser } from './actions/authActions'
@@ -41,16 +41,13 @@ class RecordList extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        <RecordNav />
         <div className="container">
           <div className="card">
-            <h3
-              className="bold deep-orange lighten-1"
-              style={{ fontFamily: 'GillSans', marginBottom: 0 }}
+            <table
+              className="table highlight centered"
+              style={{ marginTop: '50px' }}
             >
-              Training Record
-            </h3>
-            <table className="table highlight centered">
               <thead>
                 <tr className="deep-orange lighten-1">
                   <th>Event</th>

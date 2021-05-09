@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Nav from '../Nav'
+import DumbbellRaiseNav from '../Nav/DumbbellRaiseNav'
 import RankingMenu from './RankingMenu'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -78,10 +78,7 @@ class DumbellRaiseRanking extends Component {
   render() {
     return (
       <div>
-        <Nav />
-        <h3 className="bold" style={{ fontFamily: 'GillSans' }}>
-          DUMBBELL RAISE RANKING
-        </h3>
+        <DumbbellRaiseNav />
         <div className="container">
           <div className="card">
             <RankingMenu />

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Nav from '../Nav'
+import SquatNav from '../Nav/SquatNav'
 import RankingMenu from './RankingMenu'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -74,10 +74,7 @@ class SquatRanking extends Component {
   render() {
     return (
       <div>
-        <Nav />
-        <h3 className="bold" style={{ fontFamily: 'GillSans' }}>
-          SQUAT RANKING
-        </h3>
+        <SquatNav />
         <div className="container">
           <div className="card">
             <RankingMenu />
