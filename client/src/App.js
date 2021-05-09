@@ -16,7 +16,7 @@ import PullUp from './sketches/PullUp'
 import ArmCurl from './sketches/ArmCurl'
 import DumbbellRaise from './sketches/DumbbellRaise'
 
-import Profile from './Profile'
+// import Profile from './Profile'
 import UpdateProfile from './UpdateProfile'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
@@ -62,8 +62,8 @@ function App() {
             <PrivateRoute path="/pull-up" component={PullUp} />
             <PrivateRoute path="/arm-curl" component={ArmCurl} />
             <PrivateRoute path="/dumbbell-raise" component={DumbbellRaise} />
-            <PrivateRoute path="/profile" component={Profile} />
-            <PrivateRoute path="/update" component={UpdateProfile} />
+            {/* <PrivateRoute path="/profile" component={Profile} /> */}
+            <PrivateRoute path="/profile" component={UpdateProfile} />
             <PrivateRoute path="/my-records" component={Record} />
             <PrivateRoute exact path="/squat-ranking" component={Ranking} />
             <PrivateRoute
