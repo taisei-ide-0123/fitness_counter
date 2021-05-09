@@ -49,6 +49,37 @@ class Profile extends Component {
                     <b>Your profile</b>
                   </h4>
                 </div>
+                <div
+                  className="col s12"
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <div
+                    style={{
+                      height: '130px',
+                      width: '130px',
+                      border: '3px solid #ff5722',
+                      borderRadius: '50%',
+                      cursor: 'pointer',
+                      marginBottom: '20px',
+                    }}
+                  >
+                    <img
+                      src={this.state.img}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        position: 'acsolute',
+                        borderRadius: '50%',
+                      }}
+                      alt="profile img"
+                    />
+                  </div>
+                </div>
                 <div className="input-field col s12">
                   <input
                     disabled
@@ -87,19 +118,17 @@ class Profile extends Component {
                 </div>
                 <div className="col s12" style={{ paddingLeft: '11.250px' }}>
                   <Link to="/update">
-                    <button
+                    <i
+                      className="material-icons"
                       style={{
-                        width: '150px',
-                        borderRadius: '3px',
                         letterSpacing: '1.5px',
                         marginTop: '1rem',
                         marginBottom: '4rem',
+                        color: '#000',
                       }}
-                      type="submit"
-                      className="btn btn-large waves-effect waves-light hoverable deep-orange"
                     >
-                      EDIT
-                    </button>
+                      edit
+                    </i>
                   </Link>
                 </div>
               </div>

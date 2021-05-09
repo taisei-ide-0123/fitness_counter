@@ -90,7 +90,7 @@ class UpdateProfile extends Component {
       .put('/api/users/update/' + this.props.auth.user.id, user)
       .then((res) => console.log(res.data))
 
-    // window.location = '/profile'
+    window.location = '/profile'
   }
 
   render() {
