@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react'
 import axios from 'axios'
-import Nav from './components/Nav'
+import ProfileNav from './components/Nav/ProfileNav'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setCurrentUser } from './actions/authActions'
@@ -117,16 +117,11 @@ class UpdateProfile extends Component {
 
     return (
       <div>
-        <Nav />
+        <ProfileNav />
         <div className="container">
           <div className="card">
             <div style={{ marginTop: '4rem' }} className="row">
               <div className="col s8 offset-s2">
-                <div className="col s12" style={{ paddingBottom: '11.250px' }}>
-                  <h4>
-                    <b>Your profile</b>
-                  </h4>
-                </div>
                 <form onSubmit={this.onSubmit}>
                   {/* profile img */}
                   <div
@@ -136,6 +131,7 @@ class UpdateProfile extends Component {
                       flexDirection: 'column',
                       alignItems: 'center',
                       justifyContent: 'center',
+                      marginTop: '50px',
                     }}
                   >
                     <input

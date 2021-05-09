@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Nav from '../Nav'
+import ArmCurlNav from '../Nav/ArmCurlNav'
 import RankingMenu from './RankingMenu'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -76,10 +76,7 @@ class ArmCurlRanking extends Component {
   render() {
     return (
       <div>
-        <Nav />
-        <h3 className="bold" style={{ fontFamily: 'GillSans' }}>
-          ARM CURL RANKING
-        </h3>
+        <ArmCurlNav />
         <div className="container">
           <div className="card">
             <RankingMenu />

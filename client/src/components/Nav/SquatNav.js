@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { logoutUser } from '../actions/authActions'
+import { logoutUser } from '../../actions/authActions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
+  faHome,
   faCrown,
   faClipboard,
   faUser,
@@ -43,11 +44,24 @@ class Nav extends Component {
             <Link
               className="brand-logo center"
               style={{ color: '#fff', textDecoration: 'none' }}
-              to="/menu"
+              to="/squat-ranking"
             >
-              Fithabit
+              SQUAT RANKING
             </Link>
             <ul className="right hide-on-med-and-down" id="nav-mobile">
+              <li>
+                <Link
+                  style={{
+                    color: '#fff',
+                    textDecoration: 'none',
+                    listStyle: 'none',
+                    fontSize: '20px',
+                  }}
+                  to="/menu"
+                >
+                  <FontAwesomeIcon icon={faHome} />
+                </Link>
+              </li>
               <li>
                 <Link
                   style={{
@@ -105,6 +119,20 @@ class Nav extends Component {
         </nav>
 
         <ul id="slide-out" className="sidenav">
+          <Link
+            style={{
+              color: '#000',
+              textDecoration: 'none',
+              listStyle: 'none',
+              fontSize: '20px',
+            }}
+            to="/menu"
+          >
+            <li>
+              Home&nbsp;
+              <FontAwesomeIcon icon={faHome} />
+            </li>
+          </Link>
           <Link
             style={{
               color: '#000',

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Nav from '../Nav'
+import PushUpNav from '../Nav/PushUpNav'
 import RankingMenu from './RankingMenu'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -74,10 +74,7 @@ class PushUpRanking extends Component {
   render() {
     return (
       <div>
-        <Nav />
-        <h3 className="bold" style={{ fontFamily: 'GillSans' }}>
-          PUSH UP RANKING
-        </h3>
+        <PushUpNav />
         <div className="container">
           <div className="card">
             <RankingMenu />
