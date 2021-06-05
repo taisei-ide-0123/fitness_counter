@@ -19,7 +19,7 @@ class LogoutNav extends Component {
     return (
       <div>
         <nav>
-          <div className="nav-wrapper deep-orange lighten-1">
+          <div className="nav-wrapper red darken-1">
             <Link
               href="#"
               data-target="slide-out"

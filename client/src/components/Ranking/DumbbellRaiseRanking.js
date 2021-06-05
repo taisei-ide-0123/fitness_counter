@@ -84,7 +84,7 @@ class DumbellRaiseRanking extends Component {
             <RankingMenu />
             <table className="table highlight centered">
               <thead>
-                <tr className="deep-orange lighten-1">
+                <tr className="red darken-1">
                   <th>Rank</th>
                   <th>Icon</th>
                   <th>Name</th>

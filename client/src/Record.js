@@ -49,7 +49,7 @@ class RecordList extends Component {
               style={{ marginTop: '50px' }}
             >
               <thead>
-                <tr className="deep-orange lighten-1">
+                <tr className="red darken-1">
                   <th>Event</th>
                   <th>Count</th>
                   <th>Date</th>

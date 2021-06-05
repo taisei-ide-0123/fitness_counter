@@ -11,7 +11,7 @@ class RankingMenu extends Component {
     return (
       <div style={{ marginTop: '50px' }}>
         <nav>
-          <div className="nav-wrapper deep-orange lighten-1">
+          <div className="nav-wrapper red darken-1">
             <ul
               style={{
                 display: 'flex',
