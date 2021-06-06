@@ -31,7 +31,7 @@ class PushUpRanking extends Component {
       .map((user, i) => {
         return (
           <tr>
-            <td style={{ fontSize: '50px' }}>{i + 1}</td>
+            <td style={{ fontSize: '30px' }}>{i + 1}</td>
             <td>
               <div
                 className="col s12"
@@ -44,8 +44,8 @@ class PushUpRanking extends Component {
               >
                 <div
                   style={{
-                    height: '70px',
-                    width: '70px',
+                    height: '50px',
+                    width: '50px',
                     border: '1px solid #ff5722',
                     borderRadius: '50%',
                     cursor: 'pointer',
@@ -64,8 +64,8 @@ class PushUpRanking extends Component {
                 </div>
               </div>
             </td>
-            <td style={{ fontSize: '25px' }}>{user.name}</td>
-            <td style={{ fontSize: '25px' }}>{user.total_push_up_count}</td>
+            <td style={{ fontSize: '20px' }}>{user.name}</td>
+            <td style={{ fontSize: '20px' }}>{user.total_push_up_count}</td>
           </tr>
         )
       })
@@ -76,11 +76,11 @@ class PushUpRanking extends Component {
       <div>
         <PushUpNav />
         <div className="container">
-          <div className="card">
+          <div className="white">
             <RankingMenu />
             <table className="table highlight centered">
               <thead>
-                <tr className="red darken-1">
+                <tr className="white">
                   <th>Rank</th>
                   <th>Icon</th>
                   <th>Name</th>

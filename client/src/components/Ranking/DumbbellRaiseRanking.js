@@ -33,7 +33,7 @@ class DumbellRaiseRanking extends Component {
       .map((user, i) => {
         return (
           <tr>
-            <td style={{ fontSize: '50px' }}>{i + 1}</td>
+            <td style={{ fontSize: '30px' }}>{i + 1}</td>
             <td>
               <div
                 className="col s12"
@@ -46,8 +46,8 @@ class DumbellRaiseRanking extends Component {
               >
                 <div
                   style={{
-                    height: '70px',
-                    width: '70px',
+                    height: '50px',
+                    width: '50px',
                     border: '1px solid #ff5722',
                     borderRadius: '50%',
                     cursor: 'pointer',
@@ -66,8 +66,8 @@ class DumbellRaiseRanking extends Component {
                 </div>
               </div>
             </td>
-            <td style={{ fontSize: '25px' }}>{user.name}</td>
-            <td style={{ fontSize: '25px' }}>
+            <td style={{ fontSize: '20px' }}>{user.name}</td>
+            <td style={{ fontSize: '20px' }}>
               {user.total_dumbbell_raise_count}
             </td>
           </tr>
@@ -80,11 +80,11 @@ class DumbellRaiseRanking extends Component {
       <div>
         <DumbbellRaiseNav />
         <div className="container">
-          <div className="card">
+          <div className="white">
             <RankingMenu />
             <table className="table highlight centered">
               <thead>
-                <tr className="red darken-1">
+                <tr className="white">
                   <th>Rank</th>
                   <th>Icon</th>
                   <th>Name</th>
