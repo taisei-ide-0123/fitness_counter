@@ -9,7 +9,7 @@ import DumbbellRaiseIcon from '../icon/dumbbell-raise-icon.png'
 class RankingMenu extends Component {
   render() {
     return (
-      <div style={{ marginTop: '50px' }}>
+      <div>
         <nav>
           <div className="nav-wrapper red darken-1">
             <ul
