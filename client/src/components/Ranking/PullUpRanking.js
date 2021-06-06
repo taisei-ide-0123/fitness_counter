@@ -16,7 +16,11 @@ class PullUpRanking extends Component {
     axios
       .get('/api/users/squat/ranking/')
       .then((response) => {
-        this.setState({ users: response.data })
+        this.setState({
+          users: response.data.sort((a, b) =>
+            a.total_pull_up_count < b.total_pull_up_count ? 1 : -1,
+          ),
+        })
         // console.log(response.data)
         // console.log(this.state.records)
       })
@@ -75,6 +79,89 @@ class PullUpRanking extends Component {
     return (
       <div>
         <PullUpNav />
+        <div class="container">
+          <div className="row">
+            <div className="col s4 m4 l4">
+              <div className="card">
+                <div class="card-image">
+                  {this.state.users[1] && (
+                    <img
+                      className="activator"
+                      src={this.state.users[1].img}
+                      alt="user img"
+                    />
+                  )}
+                </div>
+                <div className="card-content">
+                  <span
+                    class="card-title activator grey-text text-darken-4"
+                    style={{ fontWeight: 900 }}
+                  >
+                    2nd
+                  </span>
+                  {this.state.users[1] && (
+                    <span class="card-title activator grey-text text-darken-4">
+                      TOTAL:&nbsp;{this.state.users[1].total_pull_up_count}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="col s4 m4 l4">
+              <div className="card">
+                <div className="card-image">
+                  {this.state.users[0] && (
+                    <img
+                      className="activator"
+                      src={this.state.users[0].img}
+                      alt="user img"
+                    />
+                  )}
+                </div>
+                <div className="card-content">
+                  <span
+                    className="card-title activator red-text text-darken-1"
+                    style={{ fontWeight: 900 }}
+                  >
+                    1st
+                  </span>
+                  {this.state.users[0] && (
+                    <span class="card-title activator grey-text text-darken-4">
+                      TOTAL:&nbsp;{this.state.users[0].total_pull_up_count}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="col s4 m4 l4">
+              <div className="card">
+                <div className="card-image">
+                  {this.state.users[2] && (
+                    <img
+                      className="activator"
+                      src={this.state.users[2].img}
+                      alt="user img"
+                    />
+                  )}
+                </div>
+                <div></div>
+                <div className="card-content">
+                  <span
+                    className="card-title activator grey-text text-darken-4"
+                    style={{ fontWeight: 900 }}
+                  >
+                    3rd
+                  </span>
+                  {this.state.users[2] && (
+                    <span class="card-title activator grey-text text-darken-4">
+                      TOTAL:&nbsp;{this.state.users[2].total_pull_up_count}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="container">
           <div className="white">
             <RankingMenu />

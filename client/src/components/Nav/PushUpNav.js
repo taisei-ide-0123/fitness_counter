@@ -32,7 +32,7 @@ class Nav extends Component {
   render() {
     return (
       <div>
-        <nav>
+        <nav style={{ marginBottom: 25 }}>
           <div className="nav-wrapper red darken-1">
             <Link
               data-target="slide-out"
