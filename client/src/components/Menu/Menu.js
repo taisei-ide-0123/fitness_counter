@@ -21,7 +21,7 @@ class Menu extends Component {
         <div className="container service">
           <div className="row">
             {/* card-1 */}
-            <div className="col s12 m6 l3 center-align">
+            <div className="col s12 m6 l6 center-align">
               <div className="card">
                 <div className="card-image">
                   <img src={SQUAT} alt="squat" />
@@ -60,7 +60,7 @@ class Menu extends Component {
             </div>
 
             {/* card-2 */}
-            <div className="col s12 m6 l3 center-align">
+            <div className="col s12 m6 l6 center-align">
               <div className="card">
                 <div className="card-image">
                   <img src={PUSHUP} alt="push up" />
@@ -97,7 +97,7 @@ class Menu extends Component {
             </div>
 
             {/* card-3 */}
-            <div className="col s12 m6 l3 center-align">
+            <div className="col s12 m6 l6 center-align">
               <div className="card">
                 <div className="card-image">
                   <img src={PULLUP} alt="pull up" />
@@ -132,7 +132,7 @@ class Menu extends Component {
             </div>
 
             {/* card-4 */}
-            <div className="col s12 m6 l3 center-align">
+            <div className="col s12 m6 l6 center-align">
               <div className="card">
                 <div className="card-image">
                   <img src={ARMCURL} alt="arm curl" />
@@ -171,7 +171,7 @@ class Menu extends Component {
             </div>
 
             {/* card-5 */}
-            <div className="col s12 m6 l3 center-align">
+            <div className="col s12 m6 l6 center-align">
               <div className="card">
                 <div className="card-image">
                   <img src={DUMBBELLRAISE} alt="dumbbell raise" />
