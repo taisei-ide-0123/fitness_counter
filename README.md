@@ -7,7 +7,12 @@
 <img width="1680" alt="スクリーンショット 2021-04-30 17 33 27" src="https://user-images.githubusercontent.com/74083298/121055594-5e217580-c7f8-11eb-82c1-f2ce365a73fa.png">
 
 ログイン後、トレーニングメニューの PLAY!リンクをクリックするとデバイスのカメラが起動します。あとはカメラに向かってトレーニングを行い、Save ボタンをクリックするとトレーニング回数が記録されます。
-[Play to Fithabit](https://fithabit-01.herokuapp.com/)
+[デモを試す](https://fithabit-01.herokuapp.com/)
+
+## サンプルアカウント(こちらでログインしてください)
+
+Email: z@example.com
+password: example
 
 ## Background
 
